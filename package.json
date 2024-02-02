@@ -1,0 +1,30 @@
+{
+  "name": "hook-c-template",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "c2wasm-cli contracts/index.c build/",
+    "test": "LOG_LEVEL=error jest --config=jest.config.js --runInBand",
+    "xrpld:create": "xrpld-netgen create:standalone --protocol xahau --version 2024.1.25-release+738",
+    "xrpld:start": "xrpld-netgen start --name xahau-2024.1.25-release+738",
+    "xrpld:stop": "xrpld-netgen stop --name xahau-2024.1.25-release+738"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@transia/hooks-toolkit": "^1.0.12",
+    "@transia/xrpl": "2.7.3-alpha.24",
+    "c2wasm-cli": "^1.0.6",
+    "dotenv": "^16.4.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.5.3",
+    "@tsconfig/node18": "^18.2.2",
+    "@types/jest": "^29.5.12",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.3.3"
+  }
+}
