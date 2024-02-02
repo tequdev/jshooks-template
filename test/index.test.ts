@@ -17,7 +17,7 @@ import {
   clearHookStateV3,
 } from '@transia/hooks-toolkit'
 
-const namespaces = 'namespace'
+const namespace = 'namespace'
 
 describe('test', () => {
   let testContext: XrplIntegrationTestContext
@@ -25,10 +25,10 @@ describe('test', () => {
   beforeAll(async () => {
     testContext = await setupClient(serverUrl)
     const hook = {
-      CreateCode: readHookBinaryHexFromNS('../hook/index.wasm'),
+      CreateCode: readHookBinaryHexFromNS('../build/index'),
       Flags: SetHookFlags.hsfOverride,
       HookOn: calculateHookOn(['Invoke']),
-      HookNamespace: hexNamespace(namespaces),
+      HookNamespace: hexNamespace(namespace),
       HookApiVersion: 0,
     } as iHook
     await setHooksV3({
@@ -41,7 +41,7 @@ describe('test', () => {
   afterAll(async () => {
     const clearHook = {
       Flags: SetHookFlags.hsfNSDelete,
-      HookNamespace: hexNamespace(namespaces),
+      HookNamespace: hexNamespace(namespace),
     } as iHook
     await clearHookStateV3({
       client: testContext.client,
