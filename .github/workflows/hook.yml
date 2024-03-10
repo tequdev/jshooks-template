@@ -1,0 +1,24 @@
+name: Analyze Hooks
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'contracts/**'
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - 'contracts/**'
+  workflow_dispatch:
+permissions:
+  pull-requests: write
+jobs:
+  hook:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: Analyze Hooks
+        uses: tequdev/xrpl-hook-fee-actions@v1
+        with:
+          inPath: contracts

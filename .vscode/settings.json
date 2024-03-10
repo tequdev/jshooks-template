@@ -3,13 +3,13 @@
   "[javascript]": {
     "editor.defaultFormatter": "biomejs.biome",
     "editor.codeActionsOnSave": {
-      "quickfix.biome": true
+      "quickfix.biome": "explicit"
     }
   },
   "[c]":{
     "editor.defaultFormatter": "xaver.clang-format",
     "editor.codeActionsOnSave": {
-      "source.fixAll": true
+      "source.fixAll": "explicit"
     }
   }
 }
