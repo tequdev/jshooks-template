@@ -7,14 +7,14 @@
     "build": "c2wasm-cli contracts/index.c build/",
     "test": "LOG_LEVEL=error jest --config=jest.config.js --runInBand",
     "xrpld:create": "xrpld-netgen create:standalone --protocol xahau --version 2024.1.25-release+738",
-    "xrpld:start": "xrpld-netgen start --name xahau-2024.1.25-release+738",
-    "xrpld:stop": "xrpld-netgen stop --name xahau-2024.1.25-release+738"
+    "xrpld:start": "xrpld-netgen up:standalone",
+    "xrpld:stop": "xrpld-netgen down:standalone"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@transia/hooks-toolkit": "^1.0.12",
+    "@transia/hooks-toolkit": "^1.0.13",
     "@transia/xrpl": "2.7.3-alpha.24",
     "c2wasm-cli": "^1.0.6",
     "dotenv": "^16.4.1"
