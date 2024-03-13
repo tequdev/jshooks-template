@@ -2,16 +2,16 @@ import { SetHookFlags, calculateHookOn } from '@transia/xrpl'
 
 import {
   serverUrl,
-  XrplIntegrationTestContext,
+  type XrplIntegrationTestContext,
   setupClient,
   teardownClient,
 } from '@transia/hooks-toolkit/dist/npm/src/libs/xrpl-helpers'
 
 import {
-  SetHookParams,
+  type SetHookParams,
   setHooksV3,
   hexNamespace,
-  iHook,
+  type iHook,
   readHookBinaryHexFromNS,
   clearAllHooksV3,
   clearHookStateV3,
