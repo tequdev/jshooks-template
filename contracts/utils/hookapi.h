@@ -53,5 +53,6 @@
 #include "extern.h"
 #include "macro.h"
 #include "sfcodes.h"
+#include "tts.h"
 
 #endif
