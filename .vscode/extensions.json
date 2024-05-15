@@ -1,5 +1,8 @@
 {
   "recommendations": [
-    "xaver.clang-format"
+    "xaver.clang-format",
+    "ms-vscode.cpptools",
+    "ms-vscode.cpptools-themes",
+    "ms-vscode.cpptools-extension-pack"
   ]
 }
