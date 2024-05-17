@@ -178,9 +178,6 @@ extern int64_t
 otxn_field(uint32_t write_ptr, uint32_t write_len, uint32_t field_id);
 
 extern int64_t
-otxn_field_txt(uint32_t write_ptr, uint32_t write_len, uint32_t field_id);
-
-extern int64_t
 otxn_generation(void);
 
 extern int64_t
@@ -347,4 +344,4 @@ util_verify(
     uint32_t kread_ptr,
     uint32_t kread_len);
 #define HOOK_EXTERN
-#endif  // HOOK_EXTERN
+#endif // HOOK_EXTERN
