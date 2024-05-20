@@ -159,40 +159,15 @@ declare global {
     key: number[] | string,
   ): number
 
-  export declare function sto_emplace(
-    write_ptr: number,
-    write_len: number,
-    sread_ptr: number,
-    sread_len: number,
-    fread_ptr: number,
-    fread_len: number,
-    field_id: number,
-  ): number
+  export declare function sto_emplace(sto: number[] | string, field: number[] | string, field_id: number): number[] | number
 
-  export declare function sto_erase(
-    write_ptr: number,
-    write_len: number,
-    read_ptr: number,
-    read_len: number,
-    field_id: number,
-  ): number
+  export declare function sto_erase(sto: number[] | string, field_id: number): number[] | number
 
-  export declare function sto_subarray(
-    read_ptr: number,
-    read_len: number,
-    array_id: number,
-  ): number
+  export declare function sto_subarray(sto: number[] | string, array_id: number): number
 
-  export declare function sto_subfield(
-    read_ptr: number,
-    read_len: number,
-    field_id: number,
-  ): number
+  export declare function sto_subfield(sto: number[] | string, field_id: number): number
 
-  export declare function sto_validate(
-    tread_ptr: number,
-    tread_len: number,
-  ): number
+  export declare function sto_validate(sto: number[] | string): number
 
   export declare function trace(message: string, data: string, as_hex: boolean
   ): string | number
