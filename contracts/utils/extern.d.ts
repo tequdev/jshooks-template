@@ -78,7 +78,7 @@ declare global {
 
   export declare function float_sum(float1: number, float2: number): number
 
-  export declare function hook_account(): ArrayBuffer
+  export declare function hook_account(): ArrayBuffer | number
 
   export declare function hook_again(): number
 
