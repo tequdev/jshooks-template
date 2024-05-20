@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prebuild": "esbuild contracts/index.ts --bundle --outfile=contracts/dist/index.js --format=esm",
+    "prebuild:compile": "esbuild contracts/index.ts --bundle --outfile=contracts/dist/index.js --format=esm",
+    "prebuild:js-clean": "tsx hook_cleaner.ts contracts/dist/index.js contracts/dist/index.js",
+    "prebuild": "pnpm prebuild:compile && pnpm prebuild:js-clean",
     "build": "js2wasm-cli contracts/dist/index.js build/",
-    "_postbuild": "rm -rf contracts/dist",
+    "postbuild": "rm -rf contracts/dist",
     "test": "LOG_LEVEL=error VITE_CJS_TRACE=true vitest",
     "xrpld:start": "xrpld-netgen up:standalone --protocol xahau --version 2024.5.20-dev+jshooks",
     "xrpld:stop": "xrpld-netgen down:standalone"
@@ -24,6 +26,7 @@
     "@tsconfig/node18": "^18.2.2",
     "esbuild": "^0.21.3",
     "js2wasm-cli": "^1.0.0",
+    "tsx": "^4.10.5",
     "typescript": "^5.3.3",
     "vitest": "^1.3.1"
   }
