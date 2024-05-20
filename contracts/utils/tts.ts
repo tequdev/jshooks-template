@@ -1,6 +1,5 @@
 // For documentation please see: https://xrpl-hooks.readme.io/reference/
 
-
 export const ttPAYMENT = 0
 export const ttESCROW_CREATE = 1
 export const ttESCROW_FINISH = 2
@@ -43,4 +42,3 @@ export const ttFEE = 101
 export const ttUNL_MODIFY = 102
 export const ttEMIT_FAILURE = 103
 export const ttUNL_REPORT = 104
-

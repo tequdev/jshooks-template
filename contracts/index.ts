@@ -1,10 +1,9 @@
-// @ts-nocheck
 import { ttINVOKE } from "./utils/tts"
 
 const transactiontype = () => otxn_type()
 
-const Hook = (arg) => {
-  trace('HookOnTT.js: Called.', false)
+const Hook = (arg: number) => {
+  trace("TRC", 'HookOnTT.js: Called.', false)
   // _g(1, 1)
 
   const tt = transactiontype()

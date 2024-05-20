@@ -19,7 +19,7 @@ import {
 } from '@transia/hooks-toolkit'
 
 //
-import path from 'path'
+import path from 'node:path'
 function readJSHookBinaryHexFromNS(filename: string): string {
   const buildPath = `${process.cwd()}/build`
   return wasmToHex(path.resolve(__dirname, `${buildPath}/${filename}.bc`))
