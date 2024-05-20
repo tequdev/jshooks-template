@@ -3,11 +3,5 @@
   "editor.defaultFormatter": "biomejs.biome",
   "editor.codeActionsOnSave": {
     "quickfix.biome": "explicit"
-  },
-  "[c]": {
-    "editor.defaultFormatter": "xaver.clang-format",
-    "editor.codeActionsOnSave": {
-      "source.fixAll": "explicit"
-    }
   }
 }

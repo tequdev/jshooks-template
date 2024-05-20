@@ -14,9 +14,6 @@ importers:
       '@transia/xrpl':
         specifier: 2.7.3-alpha.24
         version: 2.7.3-alpha.24
-      c2wasm-cli:
-        specifier: ^1.0.6
-        version: 1.0.6
       dotenv:
         specifier: ^16.4.1
         version: 16.4.5
@@ -27,6 +24,9 @@ importers:
       '@tsconfig/node18':
         specifier: ^18.2.2
         version: 18.2.4
+      js2wasm-cli:
+        specifier: ^1.0.0
+        version: 1.0.0
       typescript:
         specifier: ^5.3.3
         version: 5.4.5
@@ -708,6 +708,10 @@ packages:
 
   js-tokens@9.0.0:
     resolution: {integrity: sha512-WriZw1luRMlmV3LGJaR6QOJjWwgLUTf89OwT2lUOyjX2dJGBwgmIkbcz+7WFZjrZM635JOIR517++e/67CP9dQ==}
+
+  js2wasm-cli@1.0.0:
+    resolution: {integrity: sha512-Li5k07zRosG0V+2mKb/Pc3KxCBolwunkCR1NRxnQtkrHw6Z8XVsitvDeOFEmPL10rtSMKDW4eUfOlErYwzB5GA==}
+    hasBin: true
 
   kuler@2.0.0:
     resolution: {integrity: sha512-Xq9nH7KlWZmXAtodXDDRE7vs6DU1gTU8zYDHDiWLSip45Egwq3plLHzPn27NgvzL2r1LMPC1vdqh98sQxtqj4A==}
@@ -1707,6 +1711,16 @@ snapshots:
   isexe@2.0.0: {}
 
   js-tokens@9.0.0: {}
+
+  js2wasm-cli@1.0.0:
+    dependencies:
+      axios: 1.6.8
+      base64-js: 1.5.1
+      commander: 10.0.1
+      dotenv: 16.4.5
+      pako: 2.1.0
+    transitivePeerDependencies:
+      - debug
 
   kuler@2.0.0: {}
 

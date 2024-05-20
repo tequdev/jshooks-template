@@ -12,10 +12,19 @@ import {
   setHooksV3,
   hexNamespace,
   type iHook,
-  readHookBinaryHexFromNS,
   clearAllHooksV3,
   clearHookStateV3,
+  wasmToHex,
+  Xrpld,
 } from '@transia/hooks-toolkit'
+
+//
+import path from 'path'
+function readJSHookBinaryHexFromNS(filename: string): string {
+  const buildPath = `${process.cwd()}/build`
+  return wasmToHex(path.resolve(__dirname, `${buildPath}/${filename}.bc`))
+}
+//
 
 const namespace = 'namespace'
 
@@ -25,11 +34,11 @@ describe('test', () => {
   beforeAll(async () => {
     testContext = await setupClient(serverUrl)
     const hook = {
-      CreateCode: readHookBinaryHexFromNS('../build/index'),
+      CreateCode: readJSHookBinaryHexFromNS('../build/index'),
       Flags: SetHookFlags.hsfOverride,
       HookOn: calculateHookOn(['Invoke']),
       HookNamespace: hexNamespace(namespace),
-      HookApiVersion: 0,
+      HookApiVersion: 1, // js-hook
     } as iHook
     await setHooksV3({
       client: testContext.client,
@@ -56,6 +65,14 @@ describe('test', () => {
   })
 
   it('', async () => {
-    expect(0).toBe(0)
+    const response = await Xrpld.submit(testContext.client, {
+      tx: {
+        TransactionType: "Invoke",
+        Account: testContext.alice.address,
+      },
+      wallet: testContext.alice,
+    })
+    console.log(response.meta)
+    expect(response.meta).toHaveProperty('HookExecutions')
   })
 })

@@ -1,0 +1,50 @@
+// For documentation please see: https://xrpl-hooks.readme.io/reference/
+// Generated using generate_error.sh
+
+declare global {
+  enum HookErrorCodes {
+    SUCCESS = 0,
+    OUT_OF_BOUNDS = -1,
+    INTERNAL_ERROR = -2,
+    TOO_BIG = -3,
+    TOO_SMALL = -4,
+    DOESNT_EXIST = -5,
+    NO_FREE_SLOTS = -6,
+    INVALID_ARGUMENT = -7,
+    ALREADY_SET = -8,
+    PREREQUISITE_NOT_MET = -9,
+    FEE_TOO_LARGE = -10,
+    EMISSION_FAILURE = -11,
+    TOO_MANY_NONCES = -12,
+    TOO_MANY_EMITTED_TXN = -13,
+    NOT_IMPLEMENTED = -14,
+    INVALID_ACCOUNT = -15,
+    GUARD_VIOLATION = -16,
+    INVALID_FIELD = -17,
+    PARSE_ERROR = -18,
+    RC_ROLLBACK = -19,
+    RC_ACCEPT = -20,
+    NO_SUCH_KEYLET = -21,
+    NOT_AN_ARRAY = -22,
+    NOT_AN_OBJECT = -23,
+    INVALID_FLOAT = -10024,
+    DIVISION_BY_ZERO = -25,
+    MANTISSA_OVERSIZED = -26,
+    MANTISSA_UNDERSIZED = -27,
+    EXPONENT_OVERSIZED = -28,
+    EXPONENT_UNDERSIZED = -29,
+    OVERFLOW = -30,
+    NOT_IOU_AMOUNT = -31,
+    NOT_AN_AMOUNT = -32,
+    CANT_RETURN_NEGATIVE = -33,
+    NOT_AUTHORIZED = -34,
+    PREVIOUS_FAILURE_PREVENTS_RETRY = -35,
+    TOO_MANY_PARAMS = -36,
+    INVALID_TXN = -37,
+    RESERVE_INSUFFICIENT = -38,
+    COMPLEX_NOT_SUPPORTED = -39,
+    DOES_NOT_MATCH = -40,
+  }
+}
+
+export type { }
