@@ -5,12 +5,7 @@ declare global {
 
   export declare function accept(message: string, error_code: number): void
 
-  export declare function emit(
-    write_ptr: number,
-    write_len: number,
-    read_ptr: number,
-    read_len: number,
-  ): number
+  export declare function emit(tx: number[] | string): number[] | number
 
   export declare function etxn_burden(): number
 
