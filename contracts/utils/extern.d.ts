@@ -61,19 +61,14 @@ declare global {
   export declare function float_sign_set(float1: number, negative: number): number
 
   export declare function float_sto(
-    write_ptr: number,
-    write_len: number,
-    cread_ptr: number,
-    cread_len: number,
-    iread_ptr: number,
-    iread_len: number,
+    currency: number,
+    issuer: number,
     float1: number,
     field_code: number,
-  ): number
+  ): number[] | number
 
   export declare function float_sto_set(
-    read_ptr: number,
-    read_len: number,
+    buf: number,
   ): number
 
   export declare function float_sum(float1: number, float2: number): number
