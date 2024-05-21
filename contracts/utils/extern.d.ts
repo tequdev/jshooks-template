@@ -165,7 +165,7 @@ declare global {
   export declare function sto_validate(sto: number[] | string): number
 
   export declare function trace(message: string, data: string, as_hex: boolean
-  ): string | number
+  ): number
 
   export declare function trace_float(
     read_ptr: number,
