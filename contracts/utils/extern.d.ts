@@ -5,7 +5,11 @@ declare global {
 
   export declare function accept(message: string, error_code: number): void
 
-  export declare function emit(tx: number[] | string): number[] | number
+  export declare function emit(tx: number[] | string | object): number[] | number
+
+  export declare function prepare(template: object): object
+
+  export declare function otxn_json(): object | number
 
   export declare function etxn_burden(): number
 
