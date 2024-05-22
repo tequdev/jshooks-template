@@ -6,7 +6,21 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true
+      "recommended": true,
+      "style": {
+        "noRestrictedGlobals": {
+          "level": "error",
+          "options": {
+            "deniedGlobals": [
+              "setTimeout",
+              "setInterval",
+              "eval",
+              "Promise",
+              "Function"
+            ]
+          }
+        }
+      }
     }
   },
   "formatter": {
