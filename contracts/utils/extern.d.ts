@@ -1,3 +1,4 @@
+import type { Transaction } from "@transia/xrpl-models"
 import { HookErrorCodes } from './error';
 // For documentation please see: https://xrpl-hooks.readme.io/reference/
 
@@ -11,7 +12,7 @@ type JSIntArray = number[]
 
 type JSIntArrayOrHexString = JSIntArray | string
 
-type TransactionJSON = object
+type TransactionJSON = Transaction
 
 declare global {
   function g(guard_id: number, maxiter: number): JSInt64 | HookErrorCode

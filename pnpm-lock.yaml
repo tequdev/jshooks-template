@@ -14,6 +14,9 @@ importers:
       '@transia/xrpl':
         specifier: 2.7.3-alpha.24
         version: 2.7.3-alpha.24
+      '@transia/xrpl-models':
+        specifier: 2.9.1-alpha.0
+        version: 2.9.1-alpha.0
       dotenv:
         specifier: ^16.4.1
         version: 16.4.5
@@ -487,6 +490,9 @@ packages:
   '@transia/ripple-keypairs@1.1.8-alpha.0':
     resolution: {integrity: sha512-aU6sLozefJfrVZ8emYvUFIG6sxcYqRxGo7KzpLtoNgQVR2t8SoqlBoeV8qDH2ux7YXOwIbAvSZlN7WMlexXX+Q==}
     engines: {node: '>= 10'}
+
+  '@transia/xrpl-models@2.9.1-alpha.0':
+    resolution: {integrity: sha512-V4eWqFqELsD3V9qqZGntR6Fd+kLcKFPRQ1Wsg4qh5+1iCeFkDFRtThMhM+WrSgPkskOJG29P3hVP8+wSJzHIUQ==}
 
   '@transia/xrpl@2.7.3-alpha.24':
     resolution: {integrity: sha512-IqU+n9PRf4Ev6LPk5LT3Nes2a2j1QQYLcqXajSAow2tS5zfwRrCuyaPiPRROcuCOkXdu0j/zSurrPFxE3nJ2MQ==}
@@ -1492,6 +1498,8 @@ snapshots:
       brorand: 1.1.0
       elliptic: 6.5.5
       hash.js: 1.1.7
+
+  '@transia/xrpl-models@2.9.1-alpha.0': {}
 
   '@transia/xrpl@2.7.3-alpha.24':
     dependencies:
