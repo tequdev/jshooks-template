@@ -1,181 +1,188 @@
+import { HookErrorCodes } from './error';
 // For documentation please see: https://xrpl-hooks.readme.io/reference/
+
+type HookErrorCode = number
 
 type JSInt = number | string
 
-type JSIntArrayOrHexString = number[] | string
+type JSInt64 = number
+
+type JSIntArray = number[]
+
+type JSIntArrayOrHexString = JSIntArray | string
 
 declare global {
-  function g(guard_id: number, maxiter: number): number
+  function g(guard_id: number, maxiter: number): JSInt64 | HookErrorCode
 
   function accept(message: string, error_code: number): void
 
-  function emit(tx: JSIntArrayOrHexString | object): number[] | number
+  function emit(tx: JSIntArrayOrHexString | object): JSIntArray | HookErrorCode
 
   function prepare(template: object): object
 
-  function otxn_json(): object | number
+  function otxn_json(): object | HookErrorCode
 
-  function etxn_burden(): number
+  function etxn_burden(): JSInt64 | HookErrorCode
 
-  function etxn_details(): number[] | number
+  function etxn_details(): JSIntArray | HookErrorCode
 
-  function etxn_fee_base(txblob: JSIntArrayOrHexString): number
+  function etxn_fee_base(txblob: JSIntArrayOrHexString): JSInt64 | HookErrorCode
 
-  function etxn_generation(): number
+  function etxn_generation(): JSInt64 | HookErrorCode
 
-  function etxn_nonce(): number[] | number
+  function etxn_nonce(): JSIntArray | HookErrorCode
 
-  function etxn_reserve(count: JSInt): number
+  function etxn_reserve(count: JSInt): JSInt64 | HookErrorCode
 
-  function fee_base(): number
+  function fee_base(): JSInt64 | HookErrorCode
 
-  function float_compare(float1: JSInt, float2: JSInt, mode: JSInt): number
+  function float_compare(float1: JSInt, float2: JSInt, mode: JSInt): JSInt64 | HookErrorCode
 
-  function float_divide(float1: JSInt, float2: JSInt): number
+  function float_divide(float1: JSInt, float2: JSInt): JSInt64 | HookErrorCode
 
-  function float_int(float1: JSInt, decimal_places: JSInt, abs: JSInt): number
+  function float_int(float1: JSInt, decimal_places: JSInt, abs: JSInt): JSInt64 | HookErrorCode
 
-  function float_invert(float1: JSInt): number
+  function float_invert(float1: JSInt): JSInt64 | HookErrorCode
 
-  function float_log(float1: JSInt): number
+  function float_log(float1: JSInt): JSInt64 | HookErrorCode
 
-  function float_mantissa(float1: JSInt): number
+  function float_mantissa(float1: JSInt): JSInt64 | HookErrorCode
 
-  function float_mulratio(float1: JSInt, round_up: JSInt, numerator: JSInt, denominator: JSInt): number
+  function float_mulratio(float1: JSInt, round_up: JSInt, numerator: JSInt, denominator: JSInt): JSInt64 | HookErrorCode
 
-  function float_multiply(float1: JSInt, float2: JSInt): number
+  function float_multiply(float1: JSInt, float2: JSInt): JSInt64 | HookErrorCode
 
-  function float_negate(float1: JSInt): number
+  function float_negate(float1: JSInt): JSInt64 | HookErrorCode
 
-  function float_one(): number
+  function float_one(): JSInt64 | HookErrorCode
 
-  function float_root(float1: JSInt, n: JSInt): number
+  function float_root(float1: JSInt, n: JSInt): JSInt64 | HookErrorCode
 
-  function float_set(exponent: JSInt, mantissa: JSInt): number
+  function float_set(exponent: JSInt, mantissa: JSInt): JSInt64 | HookErrorCode
 
-  function float_sign(float1: JSInt): number
+  function float_sign(float1: JSInt): JSInt64 | HookErrorCode
 
   function float_sto(
     currency: JSIntArrayOrHexString,
     issuer: JSIntArrayOrHexString,
     float1: JSInt,
     field_code: JSInt,
-  ): number[] | number
+  ): JSIntArray | HookErrorCode
 
-  function float_sum(float1: JSInt, float2: JSInt): number
+  function float_sum(float1: JSInt, float2: JSInt): JSInt64 | HookErrorCode
 
-  function hook_account(): ArrayBuffer | number
+  function hook_account(): ArrayBuffer | HookErrorCode
 
-  function hook_again(): number
+  function hook_again(): JSInt64 | HookErrorCode
 
-  function hook_hash(hook_no: JSInt): number[] | number
+  function hook_hash(hook_no: JSInt): JSIntArray | HookErrorCode
 
-  function hook_param(name: JSIntArrayOrHexString): nunber[] | number
+  function hook_param(name: JSIntArrayOrHexString): nunber[] | HookErrorCode
 
-  function otxn_param(param_key: JSIntArrayOrHexString): number[] | number
+  function otxn_param(param_key: JSIntArrayOrHexString): JSIntArray | HookErrorCode
 
-  function hook_param_set(val: JSIntArrayOrHexString, key: JSIntArrayOrHexString, hhash: JSIntArrayOrHexString): number
+  function hook_param_set(val: JSIntArrayOrHexString, key: JSIntArrayOrHexString, hhash: JSIntArrayOrHexString): JSInt64 | HookErrorCode
 
-  function hook_pos(): number
+  function hook_pos(): JSInt64 | HookErrorCode
 
-  function hook_skip(hhash: JSIntArrayOrHexString, flags: JSInt): number
+  function hook_skip(hhash: JSIntArrayOrHexString, flags: JSInt): JSInt64 | HookErrorCode
 
-  function ledger_keylet(lo: JSIntArrayOrHexString, hi: JSIntArrayOrHexString): number[] | number
+  function ledger_keylet(lo: JSIntArrayOrHexString, hi: JSIntArrayOrHexString): JSIntArray | HookErrorCode
 
-  function ledger_last_hash(): number[]
+  function ledger_last_hash(): JSIntArray
 
-  function ledger_last_time(): number
+  function ledger_last_time(): JSInt64 | HookErrorCode
 
-  function ledger_nonce(): number[] | number
+  function ledger_nonce(): JSIntArray | HookErrorCode
 
-  function ledger_seq(): number
+  function ledger_seq(): JSInt64 | HookErrorCode
 
-  function meta_slot(slot_no: number): number
+  function meta_slot(slot_no: number): JSInt64 | HookErrorCode
 
-  function otxn_burden(): number
+  function otxn_burden(): JSInt64 | HookErrorCode
 
-  function otxn_field(field_id: JSInt): number[] | number
+  function otxn_field(field_id: JSInt): JSIntArray | HookErrorCode
 
-  function otxn_generation(): number
+  function otxn_generation(): JSInt64 | HookErrorCode
 
-  function otxn_id(flags_in: number): ArrayBuffer | number
+  function otxn_id(flags_in: number): ArrayBuffer | HookErrorCode
 
-  function otxn_slot(slot_no: JSInt): number
+  function otxn_slot(slot_no: JSInt): JSInt64 | HookErrorCode
 
-  function otxn_type(): number
+  function otxn_type(): JSInt64 | HookErrorCode
 
   function rollback(message: string, error_code: number): void
 
-  function slot(slot: JSInt): ArrayBuffer | number
+  function slot(slot: JSInt): ArrayBuffer | HookErrorCode
 
-  function slot_clear(slot: JSInt): number
+  function slot_clear(slot: JSInt): JSInt64 | HookErrorCode
 
-  function slot_count(slot: JSInt): number
+  function slot_count(slot: JSInt): JSInt64 | HookErrorCode
 
-  function slot_float(slot_no: JSInt): number
+  function slot_float(slot_no: JSInt): JSInt64 | HookErrorCode
 
-  function slot_set(key: JSIntArrayOrHexString, slot_into: JSInt): number
+  function slot_set(key: JSIntArrayOrHexString, slot_into: JSInt): JSInt64 | HookErrorCode
 
-  function slot_size(slot: JSInt): number
+  function slot_size(slot: JSInt): JSInt64 | HookErrorCode
 
-  function slot_subarray(parent_slot: JSInt, array_id: JSInt, new_slot: JSInt): number
+  function slot_subarray(parent_slot: JSInt, array_id: JSInt, new_slot: JSInt): JSInt64 | HookErrorCode
 
-  function slot_subfield(parent_slot: JSInt, field_id: JSInt, new_slot: JSInt): number
+  function slot_subfield(parent_slot: JSInt, field_id: JSInt, new_slot: JSInt): JSInt64 | HookErrorCode
 
-  function slot_type(slot_no: JSInt, flags: JSInt): number
+  function slot_type(slot_no: JSInt, flags: JSInt): JSInt64 | HookErrorCode
 
-  function state(key: JSIntArrayOrHexString): number[]
+  function state(key: JSIntArrayOrHexString): JSIntArray
 
   function state_foreign(
     val: JSIntArrayOrHexString,
     key: JSIntArrayOrHexString,
     ns: JSIntArrayOrHexString,
     acc: JSIntArrayOrHexString,
-  ): number[] | number
+  ): JSIntArray | HookErrorCode
 
   function state_foreign_set(
     val: JSIntArrayOrHexString,
     key: JSIntArrayOrHexString,
     ns: JSIntArrayOrHexString,
     acc: JSIntArrayOrHexString,
-  ): number
+  ): JSInt64 | HookErrorCode
 
   function state_set(
     data: JSIntArrayOrHexString,
     key: JSIntArrayOrHexString,
-  ): number
+  ): JSInt64 | HookErrorCode
 
-  function sto_emplace(sto: JSIntArrayOrHexString, field: JSIntArrayOrHexString, field_id: JSInt): number[] | number
+  function sto_emplace(sto: JSIntArrayOrHexString, field: JSIntArrayOrHexString, field_id: JSInt): JSIntArray | HookErrorCode
 
-  function sto_erase(sto: JSIntArrayOrHexString, field_id: number): number[] | number
+  function sto_erase(sto: JSIntArrayOrHexString, field_id: JSInt): JSIntArray | HookErrorCode
 
-  function sto_subarray(sto: JSIntArrayOrHexString, array_id: JSInt): number
+  function sto_subarray(sto: JSIntArrayOrHexString, array_id: JSInt): JSInt64 | HookErrorCode
 
-  function sto_subfield(sto: JSIntArrayOrHexString, field_id: JSInt): number
+  function sto_subfield(sto: JSIntArrayOrHexString, field_id: JSInt): JSInt64 | HookErrorCode
 
-  function sto_validate(sto: JSIntArrayOrHexString): number
+  function sto_validate(sto: JSIntArrayOrHexString): JSInt64 | HookErrorCode
 
-  function trace(message: string, data: string, as_hex: boolean): number
+  function trace(message: string, data: string, as_hex: boolean): JSInt64 | HookErrorCode
 
   function trace_float(
     read_ptr: number,
     read_len: number,
     float1: number,
-  ): number
+  ): JSInt64 | HookErrorCode
 
   function trace_num(
     read_ptr: number,
     read_len: number,
     number: number,
-  ): number
+  ): JSInt64 | HookErrorCode
 
   function trace_slot(
     read_ptr: number,
     read_len: number,
     slot: number,
-  ): number
+  ): JSInt64 | HookErrorCode
 
-  function util_accid(raddr: string): number[] | number
+  function util_accid(raddr: string): JSIntArray | HookErrorCode
 
   function util_keylet(
     keylet_type: JSInt,
@@ -185,12 +192,11 @@ declare global {
     d: JSInt,
     e: JSInt,
     f: JSInt,
-  ): number[] | number
+  ): JSIntArray | HookErrorCode
 
-  function util_raddr(acc_id: string): string | number
+  function util_raddr(acc_id: string): string | HookErrorCode
 
-  function util_sha512h(data: JSIntArrayOrHexString): number[] | number
+  function util_sha512h(data: JSIntArrayOrHexString): JSIntArray | HookErrorCode
 
-  function util_verify(rawData: JSIntArrayOrHexString, rawSig: JSIntArrayOrHexString, rawKey: JSIntArrayOrHexString): number
+  function util_verify(rawData: JSIntArrayOrHexString, rawSig: JSIntArrayOrHexString, rawKey: JSIntArrayOrHexString): JSInt64 | HookErrorCode
 }
-export type { }
