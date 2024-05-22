@@ -2,12 +2,14 @@
 
 type JSInt = number | string
 
+type JSIntArrayOrHexString = number[] | string
+
 declare global {
   function g(guard_id: number, maxiter: number): number
 
   function accept(message: string, error_code: number): void
 
-  function emit(tx: number[] | string | object): number[] | number
+  function emit(tx: JSIntArrayOrHexString | object): number[] | number
 
   function prepare(template: object): object
 
@@ -17,7 +19,7 @@ declare global {
 
   function etxn_details(): number[] | number
 
-  function etxn_fee_base(txblob: number[] | string): number
+  function etxn_fee_base(txblob: JSIntArrayOrHexString): number
 
   function etxn_generation(): number
 
@@ -54,8 +56,8 @@ declare global {
   function float_sign(float1: JSInt): number
 
   function float_sto(
-    currency: number[] | string,
-    issuer: number[] | string,
+    currency: JSIntArrayOrHexString,
+    issuer: JSIntArrayOrHexString,
     float1: JSInt,
     field_code: JSInt,
   ): number[] | number
@@ -68,17 +70,17 @@ declare global {
 
   function hook_hash(hook_no: JSInt): number[] | number
 
-  function hook_param(name: number[] | string): nunber[] | number
+  function hook_param(name: JSIntArrayOrHexString): nunber[] | number
 
-  function otxn_param(param_key: number): number[] | number
+  function otxn_param(param_key: JSIntArrayOrHexString): number[] | number
 
-  function hook_param_set(val: number[] | string, key: number[] | string, hhash: number[] | string): number
+  function hook_param_set(val: JSIntArrayOrHexString, key: JSIntArrayOrHexString, hhash: JSIntArrayOrHexString): number
 
   function hook_pos(): number
 
-  function hook_skip(hhash: number[] | string, flags: number): number
+  function hook_skip(hhash: JSIntArrayOrHexString, flags: JSInt): number
 
-  function ledger_keylet(lo: number[] | string, hi: number[] | string): number[] | number
+  function ledger_keylet(lo: JSIntArrayOrHexString, hi: JSIntArrayOrHexString): number[] | number
 
   function ledger_last_hash(): number[]
 
@@ -112,7 +114,7 @@ declare global {
 
   function slot_float(slot_no: JSInt): number
 
-  function slot_set(key: number[] | string, slot_into: JSInt): number
+  function slot_set(key: JSIntArrayOrHexString, slot_into: JSInt): number
 
   function slot_size(slot: JSInt): number
 
@@ -122,36 +124,36 @@ declare global {
 
   function slot_type(slot_no: JSInt, flags: JSInt): number
 
-  function state(key: number[] | string): number[]
+  function state(key: JSIntArrayOrHexString): number[]
 
   function state_foreign(
-    val: number[] | string,
-    key: number[] | string,
-    ns: number[] | string,
-    acc: number[] | string,
+    val: JSIntArrayOrHexString,
+    key: JSIntArrayOrHexString,
+    ns: JSIntArrayOrHexString,
+    acc: JSIntArrayOrHexString,
   ): number[] | number
 
   function state_foreign_set(
-    val: number[] | string,
-    key: number[] | string,
-    ns: number[] | string,
-    acc: number[] | string,
+    val: JSIntArrayOrHexString,
+    key: JSIntArrayOrHexString,
+    ns: JSIntArrayOrHexString,
+    acc: JSIntArrayOrHexString,
   ): number
 
   function state_set(
-    data: number[] | string,
-    key: number[] | string,
+    data: JSIntArrayOrHexString,
+    key: JSIntArrayOrHexString,
   ): number
 
-  function sto_emplace(sto: number[] | string, field: number[] | string, field_id: JSInt): number[] | number
+  function sto_emplace(sto: JSIntArrayOrHexString, field: JSIntArrayOrHexString, field_id: JSInt): number[] | number
 
-  function sto_erase(sto: number[] | string, field_id: number): number[] | number
+  function sto_erase(sto: JSIntArrayOrHexString, field_id: number): number[] | number
 
-  function sto_subarray(sto: number[] | string, array_id: JSInt): number
+  function sto_subarray(sto: JSIntArrayOrHexString, array_id: JSInt): number
 
-  function sto_subfield(sto: number[] | string, field_id: JSInt): number
+  function sto_subfield(sto: JSIntArrayOrHexString, field_id: JSInt): number
 
-  function sto_validate(sto: number[] | string): number
+  function sto_validate(sto: JSIntArrayOrHexString): number
 
   function trace(message: string, data: string, as_hex: boolean): number
 
@@ -187,8 +189,8 @@ declare global {
 
   function util_raddr(acc_id: string): string | number
 
-  function util_sha512h(data: number[] | string): number[] | number
+  function util_sha512h(data: JSIntArrayOrHexString): number[] | number
 
-  function util_verify(rawData: number[] | string, rawSig: number[] | string, rawKey: number[] | string): number
+  function util_verify(rawData: JSIntArrayOrHexString, rawSig: JSIntArrayOrHexString, rawKey: JSIntArrayOrHexString): number
 }
 export type { }
