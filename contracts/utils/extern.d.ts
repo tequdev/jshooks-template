@@ -11,16 +11,18 @@ type JSIntArray = number[]
 
 type JSIntArrayOrHexString = JSIntArray | string
 
+type TransactionJSON = object
+
 declare global {
   function g(guard_id: number, maxiter: number): JSInt64 | HookErrorCode
 
   function accept(message: string, error_code: number): void
 
-  function emit(tx: JSIntArrayOrHexString | object): JSIntArray | HookErrorCode
+  function emit(tx: JSIntArrayOrHexString | TransactionJSON): JSIntArray | HookErrorCode
 
-  function prepare(template: object): object
+  function prepare(template: TransactionJSON): TransactionJSON
 
-  function otxn_json(): object | HookErrorCode
+  function otxn_json(): TransactionJSON | HookErrorCode
 
   function etxn_burden(): JSInt64 | HookErrorCode
 
