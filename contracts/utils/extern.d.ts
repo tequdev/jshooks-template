@@ -1,5 +1,7 @@
 // For documentation please see: https://xrpl-hooks.readme.io/reference/
 
+type JSInt = number | string
+
 declare global {
   function g(guard_id: number, maxiter: number): number
 
@@ -15,68 +17,56 @@ declare global {
 
   function etxn_details(): number[] | number
 
-  function etxn_fee_base(txblob: number): number
+  function etxn_fee_base(txblob: number[] | string): number
 
   function etxn_generation(): number
 
   function etxn_nonce(): number[] | number
 
-  function etxn_reserve(count: number): number
+  function etxn_reserve(count: JSInt): number
 
   function fee_base(): number
 
-  function float_compare(float1: number, float2: number, mode: number): number
+  function float_compare(float1: JSInt, float2: JSInt, mode: JSInt): number
 
-  function float_divide(float1: number, float2: number): number
+  function float_divide(float1: JSInt, float2: JSInt): number
 
-  function float_exponent(float1: number): number
+  function float_int(float1: JSInt, decimal_places: JSInt, abs: JSInt): number
 
-  function float_exponent_set(float1: number, exponent: number): number
+  function float_invert(float1: JSInt): number
 
-  function float_int(float1: number, decimal_places: number, abs: number): number
+  function float_log(float1: JSInt): number
 
-  function float_invert(float1: number): number
+  function float_mantissa(float1: JSInt): number
 
-  function float_log(float1: number): number
+  function float_mulratio(float1: JSInt, round_up: JSInt, numerator: JSInt, denominator: JSInt): number
 
-  function float_mantissa(float1: number): number
+  function float_multiply(float1: JSInt, float2: JSInt): number
 
-  function float_mantissa_set(float1: number, mantissa: number): number
-
-  function float_mulratio(float1: number, round_up: number, numerator: number, denominator: number): number
-
-  function float_multiply(float1: number, float2: number): number
-
-  function float_negate(float1: number): number
+  function float_negate(float1: JSInt): number
 
   function float_one(): number
 
-  function float_root(float1: number, n: number): number
+  function float_root(float1: JSInt, n: JSInt): number
 
-  function float_set(exponent: number, mantissa: number): number
+  function float_set(exponent: JSInt, mantissa: JSInt): number
 
-  function float_sign(float1: number): number
-
-  function float_sign_set(float1: number, negative: number): number
+  function float_sign(float1: JSInt): number
 
   function float_sto(
-    currency: number,
-    issuer: number,
-    float1: number,
-    field_code: number,
+    currency: number[] | string,
+    issuer: number[] | string,
+    float1: JSInt,
+    field_code: JSInt,
   ): number[] | number
 
-  function float_sto_set(
-    buf: number,
-  ): number
-
-  function float_sum(float1: number, float2: number): number
+  function float_sum(float1: JSInt, float2: JSInt): number
 
   function hook_account(): ArrayBuffer | number
 
   function hook_again(): number
 
-  function hook_hash(hook_no: number): number[] | number
+  function hook_hash(hook_no: JSInt): number[] | number
 
   function hook_param(name: number[] | string): nunber[] | number
 
@@ -102,35 +92,35 @@ declare global {
 
   function otxn_burden(): number
 
-  function otxn_field(field_id: number): number[] | number
+  function otxn_field(field_id: JSInt): number[] | number
 
   function otxn_generation(): number
 
   function otxn_id(flags_in: number): ArrayBuffer | number
 
-  function otxn_slot(slot_no: number): number
+  function otxn_slot(slot_no: JSInt): number
 
   function otxn_type(): number
 
   function rollback(message: string, error_code: number): void
 
-  function slot(slot: number): ArrayBuffer | number
+  function slot(slot: JSInt): ArrayBuffer | number
 
-  function slot_clear(slot: number): number
+  function slot_clear(slot: JSInt): number
 
-  function slot_count(slot: number): number
+  function slot_count(slot: JSInt): number
 
-  function slot_float(slot_no: number): number
+  function slot_float(slot_no: JSInt): number
 
-  function slot_set(key: number[] | string, slot_into: number): number
+  function slot_set(key: number[] | string, slot_into: JSInt): number
 
-  function slot_size(slot: number): number
+  function slot_size(slot: JSInt): number
 
-  function slot_subarray(parent_slot: number, array_id: number, new_slot: number): number
+  function slot_subarray(parent_slot: JSInt, array_id: JSInt, new_slot: JSInt): number
 
-  function slot_subfield(parent_slot: number, field_id: number, new_slot: number): number
+  function slot_subfield(parent_slot: JSInt, field_id: JSInt, new_slot: JSInt): number
 
-  function slot_type(slot_no: number, flags: number): number
+  function slot_type(slot_no: JSInt, flags: JSInt): number
 
   function state(key: number[] | string): number[]
 
@@ -153,13 +143,13 @@ declare global {
     key: number[] | string,
   ): number
 
-  function sto_emplace(sto: number[] | string, field: number[] | string, field_id: number): number[] | number
+  function sto_emplace(sto: number[] | string, field: number[] | string, field_id: JSInt): number[] | number
 
   function sto_erase(sto: number[] | string, field_id: number): number[] | number
 
-  function sto_subarray(sto: number[] | string, array_id: number): number
+  function sto_subarray(sto: number[] | string, array_id: JSInt): number
 
-  function sto_subfield(sto: number[] | string, field_id: number): number
+  function sto_subfield(sto: number[] | string, field_id: JSInt): number
 
   function sto_validate(sto: number[] | string): number
 
@@ -186,13 +176,13 @@ declare global {
   function util_accid(raddr: string): number[] | number
 
   function util_keylet(
-    keylet_type: number,
-    a: number,
-    b: number,
-    c: number,
-    d: number,
-    e: number,
-    f: number,
+    keylet_type: JSInt,
+    a: JSInt,
+    b: JSInt,
+    c: JSInt,
+    d: JSInt,
+    e: JSInt,
+    f: JSInt,
   ): number[] | number
 
   function util_raddr(acc_id: string): string | number
