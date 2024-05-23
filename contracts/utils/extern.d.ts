@@ -25,6 +25,12 @@ declare global {
 
   function otxn_json(): TransactionJSON | HookErrorCode
 
+  function slot_json(slotno: JSInt): TransactionJSON | HookErrorCode
+
+  function sto_to_json(sto_in: JSIntArrayOrHexString): TransactionJSON | HookErrorCode
+
+  function sto_from_json(json_in: TransactionJSON): JSIntArray | HookErrorCode
+
   function etxn_burden(): JSInt64 | HookErrorCode
 
   function etxn_details(): JSIntArray | HookErrorCode
@@ -197,7 +203,7 @@ declare global {
     f: JSInt,
   ): JSIntArray | HookErrorCode
 
-  function util_raddr(acc_id: string): string | HookErrorCode
+  function util_raddr(acc_id: JSIntArrayOrHexString): string | HookErrorCode
 
   function util_sha512h(data: JSIntArrayOrHexString): JSIntArray | HookErrorCode
 
