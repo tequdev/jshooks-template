@@ -80,7 +80,7 @@ declare global {
 
   function float_sum(float1: JSInt, float2: JSInt): JSInt64 | HookErrorCode
 
-  function hook_account(): ArrayBuffer | HookErrorCode
+  function hook_account(): JSIntArray | HookErrorCode
 
   function hook_again(): JSInt64 | HookErrorCode
 
@@ -114,7 +114,7 @@ declare global {
 
   function otxn_generation(): JSInt64 | HookErrorCode
 
-  function otxn_id(flags_in: number): ArrayBuffer | HookErrorCode
+  function otxn_id(flags_in: number): ToJSIntArray | HookErrorCode
 
   function otxn_slot(slot_no: JSInt): JSInt64 | HookErrorCode
 
@@ -122,7 +122,7 @@ declare global {
 
   function rollback(message: string, error_code: number): void
 
-  function slot(slot: JSInt): ArrayBuffer | HookErrorCode
+  function slot(slot: JSInt): ToJSIntArray | HookErrorCode
 
   function slot_clear(slot: JSInt): JSInt64 | HookErrorCode
 
