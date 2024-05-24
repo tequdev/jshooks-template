@@ -10,7 +10,7 @@
     "build": "js2wasm-cli contracts/dist/index.js build/",
     "postbuild": "rm -rf contracts/dist",
     "test": "LOG_LEVEL=error VITE_CJS_TRACE=true vitest",
-    "xrpld:start": "xrpld-netgen up:standalone --protocol xahau --version 2024.5.20-dev+jshooks",
+    "xrpld:start": "xrpld-netgen up:standalone --protocol xahau --version 2024.5.24-dev+jshooks",
     "xrpld:stop": "xrpld-netgen down:standalone",
     "trace": "docker logs --tail 100 -f xahau 2>&1 | cut -d ' ' -f 5- | grep -E 'HookInfo|HookTrace|HookError|preclaim result'"
   },
