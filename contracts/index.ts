@@ -1,4 +1,4 @@
-import { ttINVOKE } from "./utils/tts"
+import { ttINVOKE } from "jshooks-api"
 
 const transactiontype = () => otxn_type()
 
