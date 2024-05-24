@@ -140,7 +140,7 @@ declare global {
 
   function slot_type(slot_no: JSInt, flags: JSInt): JSInt64 | HookErrorCode
 
-  function state(key: JSIntArrayOrHexString): JSIntArray
+  function state(key: JSIntArrayOrHexString): JSIntArray | HookErrorCode
 
   function state_foreign(
     val: JSIntArrayOrHexString,
