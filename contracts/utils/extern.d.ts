@@ -1,5 +1,4 @@
-import type { Transaction } from "@transia/xrpl-models"
-import { HookErrorCodes } from './error';
+import type { Transaction } from "@transia/xahau-models"
 // For documentation please see: https://xrpl-hooks.readme.io/reference/
 
 type HookErrorCode = number
@@ -86,7 +85,7 @@ declare global {
 
   function hook_hash(hook_no: JSInt): JSIntArray | HookErrorCode
 
-  function hook_param(name: JSIntArrayOrHexString): nunber[] | HookErrorCode
+  function hook_param(name: JSIntArrayOrHexString): number[] | HookErrorCode
 
   function otxn_param(param_key: JSIntArrayOrHexString): JSIntArray | HookErrorCode
 
@@ -114,7 +113,7 @@ declare global {
 
   function otxn_generation(): JSInt64 | HookErrorCode
 
-  function otxn_id(flags_in: number): ToJSIntArray | HookErrorCode
+  function otxn_id(flags_in: number): JSIntArray | HookErrorCode
 
   function otxn_slot(slot_no: JSInt): JSInt64 | HookErrorCode
 
@@ -122,7 +121,7 @@ declare global {
 
   function rollback(message: string, error_code: number): void
 
-  function slot(slot: JSInt): ToJSIntArray | HookErrorCode
+  function slot(slot: JSInt): JSIntArray | HookErrorCode
 
   function slot_clear(slot: JSInt): JSInt64 | HookErrorCode
 
