@@ -11,7 +11,7 @@
     "postbuild": "rm -rf contracts/dist",
     "test": "LOG_LEVEL=error VITE_CJS_TRACE=true vitest",
     "test:unit": "vitest ./contracts/**/*.{js,ts}",
-    "xrpld:start": "xrpld-netgen up:standalone --protocol xahau --version 2024.5.25-HEAD+878",
+    "xrpld:start": "xrpld-netgen up:standalone --protocol xahau --version 2024.5.25-HEAD+879",
     "xrpld:stop": "xrpld-netgen down:standalone",
     "trace": "docker logs --tail 100 -f xahau 2>&1 | cut -d ' ' -f 5- | grep -E 'HookInfo|HookTrace|HookError|preclaim result'"
   },

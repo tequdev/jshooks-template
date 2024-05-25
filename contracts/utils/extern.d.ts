@@ -7,6 +7,8 @@ type JSInt = number | string
 
 type JSInt64 = number
 
+type JSXFL = bigint
+
 type JSIntArray = number[]
 
 type JSIntArrayOrHexString = JSIntArray | string
@@ -42,42 +44,44 @@ declare global {
 
   function etxn_reserve(count: JSInt): JSInt64 | HookErrorCode
 
-  function fee_base(): JSInt64 | HookErrorCode
+  function fee_base(): JSInt64
 
-  function float_compare(float1: JSInt, float2: JSInt, mode: JSInt): JSInt64 | HookErrorCode
+  function float_compare(float1: JSXFL, float2: JSXFL, mode: JSInt): JSInt64 | HookErrorCode
 
-  function float_divide(float1: JSInt, float2: JSInt): JSInt64 | HookErrorCode
+  function float_divide(float1: JSXFL, float2: JSXFL): JSXFL | HookErrorCode
 
-  function float_int(float1: JSInt, decimal_places: JSInt, abs: JSInt): JSInt64 | HookErrorCode
+  function float_int(float1: JSXFL, decimal_places: JSInt, abs: JSInt): JSXFL | HookErrorCode
 
-  function float_invert(float1: JSInt): JSInt64 | HookErrorCode
+  function float_invert(float1: JSXFL): JSXFL | HookErrorCode
 
-  function float_log(float1: JSInt): JSInt64 | HookErrorCode
+  function float_log(float1: JSXFL): JSXFL | HookErrorCode
 
-  function float_mantissa(float1: JSInt): JSInt64 | HookErrorCode
+  function float_mantissa(float1: JSXFL): JSXFL | HookErrorCode
 
-  function float_mulratio(float1: JSInt, round_up: JSInt, numerator: JSInt, denominator: JSInt): JSInt64 | HookErrorCode
+  function float_mulratio(float1: JSXFL, round_up: JSInt, numerator: JSInt, denominator: JSInt): JSXFL | HookErrorCode
 
-  function float_multiply(float1: JSInt, float2: JSInt): JSInt64 | HookErrorCode
+  function float_multiply(float1: JSXFL, float2: JSXFL): JSXFL | HookErrorCode
 
-  function float_negate(float1: JSInt): JSInt64 | HookErrorCode
+  function float_negate(float1: JSXFL): JSXFL | HookErrorCode
 
-  function float_one(): JSInt64 | HookErrorCode
+  function float_one(): JSXFL
 
-  function float_root(float1: JSInt, n: JSInt): JSInt64 | HookErrorCode
+  function float_root(float1: JSXFL, n: JSInt): JSXFL | HookErrorCode
 
-  function float_set(exponent: JSInt, mantissa: JSInt): JSInt64 | HookErrorCode
+  function float_set(exponent: JSInt, mantissa: JSInt): JSXFL | HookErrorCode
 
-  function float_sign(float1: JSInt): JSInt64 | HookErrorCode
+  function float_sign(float1: JSXFL): JSXFL | HookErrorCode
 
   function float_sto(
     currency: JSIntArrayOrHexString,
     issuer: JSIntArrayOrHexString,
-    float1: JSInt,
+    float1: JSXFL,
     field_code: JSInt,
   ): JSIntArray | HookErrorCode
 
-  function float_sum(float1: JSInt, float2: JSInt): JSInt64 | HookErrorCode
+  function float_sto_set(sto: JSIntArrayOrHexString): JSInt64 | HookErrorCode
+
+  function float_sum(float1: JSXFL, float2: JSXFL): JSXFL | HookErrorCode
 
   function hook_account(): JSIntArray | HookErrorCode
 
@@ -91,19 +95,19 @@ declare global {
 
   function hook_param_set(val: JSIntArrayOrHexString, key: JSIntArrayOrHexString, hhash: JSIntArrayOrHexString): JSInt64 | HookErrorCode
 
-  function hook_pos(): JSInt64 | HookErrorCode
+  function hook_pos(): JSInt64
 
   function hook_skip(hhash: JSIntArrayOrHexString, flags: JSInt): JSInt64 | HookErrorCode
 
   function ledger_keylet(lo: JSIntArrayOrHexString, hi: JSIntArrayOrHexString): JSIntArray | HookErrorCode
 
-  function ledger_last_hash(): JSIntArray
+  function ledger_last_hash(): JSIntArray | HookErrorCode
 
-  function ledger_last_time(): JSInt64 | HookErrorCode
+  function ledger_last_time(): JSInt64
 
   function ledger_nonce(): JSIntArray | HookErrorCode
 
-  function ledger_seq(): JSInt64 | HookErrorCode
+  function ledger_seq(): JSInt64
 
   function meta_slot(slot_no: number): JSInt64 | HookErrorCode
 
@@ -111,13 +115,13 @@ declare global {
 
   function otxn_field(field_id: JSInt): JSIntArray | HookErrorCode
 
-  function otxn_generation(): JSInt64 | HookErrorCode
+  function otxn_generation(): JSInt64
 
   function otxn_id(flags_in: number): JSIntArray | HookErrorCode
 
   function otxn_slot(slot_no: JSInt): JSInt64 | HookErrorCode
 
-  function otxn_type(): JSInt64 | HookErrorCode
+  function otxn_type(): JSInt64
 
   function rollback(message: string, error_code: number): void
 
@@ -170,7 +174,8 @@ declare global {
 
   function sto_validate(sto: JSIntArrayOrHexString): JSInt64 | HookErrorCode
 
-  function trace(message: string, data: string, as_hex: boolean): JSInt64 | HookErrorCode
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  function trace(message: string, data: any, as_hex: boolean): JSInt64 | HookErrorCode
 
   function trace_float(
     read_ptr: number,
