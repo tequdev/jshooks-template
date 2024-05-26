@@ -27,6 +27,9 @@ importers:
       '@biomejs/biome':
         specifier: ^1.5.3
         version: 1.7.3
+      '@transia/ripple-binary-codec':
+        specifier: 1.4.6-alpha.9
+        version: 1.4.6-alpha.9
       '@tsconfig/node18':
         specifier: ^18.2.2
         version: 18.2.4

@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.5.3",
+    "@transia/ripple-binary-codec": "1.4.6-alpha.9",
     "@tsconfig/node18": "^18.2.2",
     "esbuild": "^0.21.3",
     "js2wasm-cli": "^1.0.0",
