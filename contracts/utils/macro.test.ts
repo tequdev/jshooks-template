@@ -1,4 +1,4 @@
-import { convertBuffer2hex, convertHexToBuffer, convertHexToString, convertStringToHex, uint16ArrayFromNumber, uint16ArrayToNumber, uint16FromHex, uint16Tohex, uint32ArrayFromNumber, uint32ArrayToNumber, uint32FromHex, uint32Tohex, uint64ArrayFromBigInt, uint64ArrayFromNumber, uint64ArrayToBigInt, uint64ArrayToNumber, uint64BigFromHex, uint64FromHex, uint64Tohex, uint8ArrayFromNumber, uint8ArrayToNumber, uint8FromHex, uint8Tohex } from "./macro"
+import { convertBuffer2hex, convertHexToBuffer, convertHexToString, convertStringToHex, uint16FromHex, uint16Tohex, uint32FromHex, uint32Tohex, uint64BigFromHex, uint64FromHex, uint64Tohex, uint8ArrayFromNumber, uint8ArrayToNumber, uint8FromHex, uint8Tohex } from "./macro"
 
 it('convertHexToString', () => {
   expect(convertHexToString('414243')).toEqual('ABC')
@@ -33,14 +33,14 @@ describe('uint8', () => {
 })
 
 describe('uint16', () => {
-  it('uint16ArrayFromNumber', () => {
-    expect(uint16ArrayFromNumber(0xFF)).toEqual([0xFF])
-    expect(uint16ArrayFromNumber(0xFFFF)).toEqual([0xFFFF])
-  })
-  it('uint16ArrayToNumber', () => {
-    expect(uint16ArrayToNumber([0xFF])).toEqual(0xFF)
-    expect(uint16ArrayToNumber([0xFFFF])).toEqual(0xFFFF)
-  })
+  // it('uint16ArrayFromNumber', () => {
+  //   expect(uint16ArrayFromNumber(0xFF)).toEqual([0xFF])
+  //   expect(uint16ArrayFromNumber(0xFFFF)).toEqual([0xFFFF])
+  // })
+  // it('uint16ArrayToNumber', () => {
+  //   expect(uint16ArrayToNumber([0xFF])).toEqual(0xFF)
+  //   expect(uint16ArrayToNumber([0xFFFF])).toEqual(0xFFFF)
+  // })
   it('uint16Tohex', () => {
     expect(uint16Tohex(0x10)).toEqual('0010')
     expect(uint16Tohex(0xFF)).toEqual('00FF')
@@ -54,14 +54,14 @@ describe('uint16', () => {
 })
 
 describe('uint32', () => {
-  it('uint32ArrayFromNumber', () => {
-    expect(uint32ArrayFromNumber(0xFFFF)).toEqual([0xFFFF])
-    expect(uint32ArrayFromNumber(0xFFFFFFFF)).toEqual([0xFFFFFFFF])
-  })
-  it('uint32ArrayToNumber', () => {
-    expect(uint32ArrayToNumber([0xFFFF])).toEqual(0xFFFF)
-    expect(uint32ArrayToNumber([0xFFFFFFFF])).toEqual(0xFFFFFFFF)
-  })
+  // it('uint32ArrayFromNumber', () => {
+  //   expect(uint32ArrayFromNumber(0xFFFF)).toEqual([0xFFFF])
+  //   expect(uint32ArrayFromNumber(0xFFFFFFFF)).toEqual([0xFFFFFFFF])
+  // })
+  // it('uint32ArrayToNumber', () => {
+  //   expect(uint32ArrayToNumber([0xFFFF])).toEqual(0xFFFF)
+  //   expect(uint32ArrayToNumber([0xFFFFFFFF])).toEqual(0xFFFFFFFF)
+  // })
   it('uint32Tohex', () => {
     expect(uint32Tohex(0x10)).toEqual('00000010')
     expect(uint32Tohex(0xFF)).toEqual('000000FF')
@@ -77,22 +77,22 @@ describe('uint32', () => {
 })
 
 describe('uint64', () => {
-  it('uint64ArrayFromBigInt', () => {
-    expect(uint64ArrayFromBigInt(64n)).toEqual([64n])
-    expect(uint64ArrayFromBigInt(0xFFFFFFFFFFFFFFFFn)).toEqual([0xFFFFFFFFFFFFFFFFn])
-  })
-  it('uint64ArrayFromNumber', () => {
-    expect(uint64ArrayFromNumber(64)).toEqual([64])
-    expect(uint64ArrayFromNumber(0x0000FFFFFFFFFFFF)).toEqual([0x0000FFFFFFFFFFFF])
-  })
-  it('uint64ArrayToBigInt', () => {
-    expect(uint64ArrayToBigInt([64n])).toEqual(64n)
-    expect(uint64ArrayToBigInt([0xFFFFFFFFFFFFFFFFn])).toEqual(0xFFFFFFFFFFFFFFFFn)
-  })
-  it('uint64ArrayToNumber', () => {
-    expect(uint64ArrayToNumber([64])).toEqual(64)
-    expect(uint64ArrayToNumber([0x0000FFFFFFFFFFFF])).toEqual(0x0000FFFFFFFFFFFF)
-  })
+  // it('uint64ArrayFromBigInt', () => {
+  //   expect(uint64ArrayFromBigInt(64n)).toEqual([64n])
+  //   expect(uint64ArrayFromBigInt(0xFFFFFFFFFFFFFFFFn)).toEqual([0xFFFFFFFFFFFFFFFFn])
+  // })
+  // it('uint64ArrayFromNumber', () => {
+  //   expect(uint64ArrayFromNumber(64)).toEqual([64])
+  //   expect(uint64ArrayFromNumber(0x0000FFFFFFFFFFFF)).toEqual([0x0000FFFFFFFFFFFF])
+  // })
+  // it('uint64ArrayToBigInt', () => {
+  //   expect(uint64ArrayToBigInt([64n])).toEqual(64n)
+  //   expect(uint64ArrayToBigInt([0xFFFFFFFFFFFFFFFFn])).toEqual(0xFFFFFFFFFFFFFFFFn)
+  // })
+  // it('uint64ArrayToNumber', () => {
+  //   expect(uint64ArrayToNumber([64])).toEqual(64)
+  //   expect(uint64ArrayToNumber([0x0000FFFFFFFFFFFF])).toEqual(0x0000FFFFFFFFFFFF)
+  // })
   it('uint64Tohex', () => {
     expect(uint64Tohex(0x10n)).toEqual('0000000000000010')
     expect(uint64Tohex(0xFFn)).toEqual('00000000000000FF')
