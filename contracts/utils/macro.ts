@@ -7,7 +7,7 @@ export const doneMsg = (msg: string) => {
 export const done = (msg: number) => {
   accept(msg.toString(), 0)
 }
-export const assert = (cond: boolean, msg?: string) => {
+export const assert = (cond: boolean, msg?: string): asserts cond is true => {
   if (!cond)
     rollback(msg || '', -1)
 }
