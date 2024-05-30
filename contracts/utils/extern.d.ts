@@ -53,7 +53,7 @@ declare global {
 
   function float_divide(float1: JSXFL, float2: JSXFL): JSXFL | HookErrorCode
 
-  function float_int(float1: JSXFL, decimal_places: JSInt, abs: JSInt): JSXFL | HookErrorCode
+  function float_int(float1: JSXFL, decimal_places: JSInt, abs: JSInt): JSInt64 | HookErrorCode
 
   function float_invert(float1: JSXFL): JSXFL | HookErrorCode
 
