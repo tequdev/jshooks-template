@@ -1,4 +1,4 @@
-import { convertBuffer2hex, convertHexToBuffer, convertHexToString, convertStringToHex, uint16FromHex, uint16Tohex, uint32FromHex, uint32Tohex, uint64BigFromHex, uint64FromHex, uint64Tohex, uint8ArrayFromNumber, uint8ArrayToNumber, uint8FromHex, uint8Tohex } from "./macro"
+import { convertBuffer2hex, convertHexToBuffer, convertHexToString, convertStringToHex, uint16FromHex, uint16Tohex, uint32FromHex, uint32Tohex, uint64BigFromHex, uint64FromHex, uint64Tohex, uint8ArrayFromNumber, uint8ArrayToNumber, uint8FromHex, uint8Tohex } from "../../contracts/utils/macro"
 
 it('convertHexToString', () => {
   expect(convertHexToString('414243')).toEqual('ABC')

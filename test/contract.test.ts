@@ -1,5 +1,5 @@
 import { Hook } from '../contracts/index'
-import { mockedHookApi, type MockedHookAPI } from './utils/hook-api-mock'
+import { mockedHookApi, type MockedHookAPI } from './__mock__/hook-api-mock'
 
 let api: MockedHookAPI
 
