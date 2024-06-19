@@ -1,4 +1,3 @@
-// biome-ignore lint/correctness/noNodejsModules: <explanation>
 import * as fs from 'node:fs'
 
 function removeImportExportStatements(filePath: string, outputPath?: string): string {
@@ -33,7 +32,6 @@ function main() {
   // Set up argument parser
   const args = process.argv.slice(2)
   if (args.length < 1) {
-    // biome-ignore lint/style/noRestrictedGlobals: <explanation>
     console.error('Usage: tsx hook_cleaner.ts <input_file> [output_file]')
     process.exit(1)
   }
@@ -46,7 +44,6 @@ function main() {
 
   // Print the cleaned code if no output file is specified
   if (!outputFile) {
-    // biome-ignore lint/style/noRestrictedGlobals: <explanation>
     console.log(cleanedCode)
   }
 }

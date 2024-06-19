@@ -6,20 +6,7 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true,
-      "style": {
-        "noRestrictedGlobals": {
-          "level": "error",
-          "options": {
-            "deniedGlobals": ["assert", "console", "eval", "setInterval", "setTimeout", "Function", "Promise"]
-          }
-        }
-      },
-      "correctness": {
-        "noNodejsModules": {
-          "level": "error"
-        }
-      }
+      "recommended": true
     }
   },
   "formatter": {
@@ -32,5 +19,28 @@
       "semicolons": "asNeeded",
       "quoteStyle": "single"
     }
-  }
+  },
+  "overrides": [
+    {
+      "include": ["contracts/**/*.ts"],
+      "linter": {
+        "rules": {
+          "recommended": true,
+          "style": {
+            "noRestrictedGlobals": {
+              "level": "error",
+              "options": {
+                "deniedGlobals": ["assert", "console", "eval", "setInterval", "setTimeout", "Function", "Promise"]
+              }
+            }
+          },
+          "correctness": {
+            "noNodejsModules": {
+              "level": "error"
+            }
+          }
+        }
+      }
+    }
+  ]
 }

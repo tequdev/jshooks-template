@@ -54,6 +54,7 @@ export const mockedHookApi = (): MockedHookAPI => {
     template.SigningPubKey = ''
     template.Sequence = 0
     template.Account = util_raddr(hook_account() as JSIntArray) as string
+    // @ts-ignore
     if (!template.FirstLedgerSequence) {
       template.LastLedgerSequence = 1 + 1
     }
@@ -327,7 +328,6 @@ export const mockedHookApi = (): MockedHookAPI => {
   // trace
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   global.trace = vi.fn((key: string, value: any, isHex: boolean) => {
-    // biome-ignore lint/style/noRestrictedGlobals: <explanation>
     console.log(key, isHex ? hex2str(value) : value)
     return 0
   })
