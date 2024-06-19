@@ -1,5 +1,5 @@
 import { Hook } from '@/index'
-import { mockedHookApi, type MockedHookAPI } from '../__mock__/hook-api-mock'
+import { type MockedHookAPI, mockedHookApi } from '../__mock__/hook-api-mock'
 
 let api: MockedHookAPI
 
@@ -13,8 +13,8 @@ beforeEach(() => {
 
 it('Invoke', () => {
   api.setTransaction({
-    TransactionType: "Invoke",
-    Account: "rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn",
+    TransactionType: 'Invoke',
+    Account: 'rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn',
   })
 
   Hook(0)
@@ -23,9 +23,9 @@ it('Invoke', () => {
 
 it('Payment', () => {
   api.setTransaction({
-    TransactionType: "Payment",
-    Account: "rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn",
-    Destination: "rHktfGUbjqzU4GsYCMc1pDjdHXb5CJamto",
+    TransactionType: 'Payment',
+    Account: 'rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn',
+    Destination: 'rHktfGUbjqzU4GsYCMc1pDjdHXb5CJamto',
     Amount: '1000000',
   })
 

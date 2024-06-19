@@ -1,24 +1,25 @@
 import { SetHookFlags, calculateHookOn } from '@transia/xrpl'
 
 import {
-  serverUrl,
   type XrplIntegrationTestContext,
+  serverUrl,
   setupClient,
   teardownClient,
 } from '@transia/hooks-toolkit/dist/npm/src/libs/xrpl-helpers'
 
 import {
   type SetHookParams,
-  setHooksV3,
-  hexNamespace,
-  type iHook,
+  Xrpld,
   clearAllHooksV3,
   clearHookStateV3,
+  hexNamespace,
+  type iHook,
+  setHooksV3,
   wasmToHex,
-  Xrpld,
 } from '@transia/hooks-toolkit'
 
 //
+// biome-ignore lint/nursery/noNodejsModules: <explanation>
 import path from 'node:path'
 function readJSHookBinaryHexFromNS(filename: string): string {
   const buildPath = `${process.cwd()}/build`
@@ -67,11 +68,12 @@ describe('test', () => {
   it('', async () => {
     const response = await Xrpld.submit(testContext.client, {
       tx: {
-        TransactionType: "Invoke",
+        TransactionType: 'Invoke',
         Account: testContext.alice.address,
       },
       wallet: testContext.alice,
     })
+    // biome-ignore lint/style/noRestrictedGlobals: <explanation>
     console.log(response.meta)
     expect(response.meta).toHaveProperty('HookExecutions')
   })

@@ -11,15 +11,7 @@
         "noRestrictedGlobals": {
           "level": "error",
           "options": {
-            "deniedGlobals": [
-              "assert",
-              "console",
-              "eval",
-              "setInterval",
-              "setTimeout",
-              "Function",
-              "Promise"
-            ]
+            "deniedGlobals": ["assert", "console", "eval", "setInterval", "setTimeout", "Function", "Promise"]
           }
         }
       },
@@ -32,7 +24,8 @@
   },
   "formatter": {
     "enabled": true,
-    "indentStyle": "space"
+    "indentStyle": "space",
+    "lineWidth": 120
   },
   "javascript": {
     "formatter": {

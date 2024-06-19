@@ -14,7 +14,8 @@ export const nope = (msg: string) => {
   rollback(msg, -1)
 }
 
-const getByteHexFromView = (view: DataView, offset: number) => view.getUint8(offset).toString(16).padStart(2, '0').toUpperCase()
+const getByteHexFromView = (view: DataView, offset: number) =>
+  view.getUint8(offset).toString(16).padStart(2, '0').toUpperCase()
 
 // uint8
 export const uint8ArrayFromNumber = (value: number) => {

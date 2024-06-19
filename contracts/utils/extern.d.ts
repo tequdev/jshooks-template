@@ -1,4 +1,4 @@
-import type { Transaction } from "@transia/xahau-models"
+import type { Transaction } from '@transia/xahau-models'
 // For documentation please see: https://xrpl-hooks.readme.io/reference/
 
 type HookErrorCode = number
@@ -96,7 +96,11 @@ declare global {
 
   function otxn_param(param_key: JSIntArrayOrHexString): JSIntArray | HookErrorCode
 
-  function hook_param_set(val: JSIntArrayOrHexString, key: JSIntArrayOrHexString, hhash: JSIntArrayOrHexString): JSInt64 | HookErrorCode
+  function hook_param_set(
+    val: JSIntArrayOrHexString,
+    key: JSIntArrayOrHexString,
+    hhash: JSIntArrayOrHexString,
+  ): JSInt64 | HookErrorCode
 
   function hook_pos(): JSInt64
 
@@ -162,12 +166,13 @@ declare global {
     acc: JSIntArrayOrHexString,
   ): JSInt64 | HookErrorCode
 
-  function state_set(
-    data: JSIntArrayOrHexString,
-    key: JSIntArrayOrHexString,
-  ): JSInt64 | HookErrorCode
+  function state_set(data: JSIntArrayOrHexString, key: JSIntArrayOrHexString): JSInt64 | HookErrorCode
 
-  function sto_emplace(sto: JSIntArrayOrHexString, field: JSIntArrayOrHexString, field_id: JSInt): JSIntArray | HookErrorCode
+  function sto_emplace(
+    sto: JSIntArrayOrHexString,
+    field: JSIntArrayOrHexString,
+    field_id: JSInt,
+  ): JSIntArray | HookErrorCode
 
   function sto_erase(sto: JSIntArrayOrHexString, field_id: JSInt): JSIntArray | HookErrorCode
 
@@ -180,23 +185,11 @@ declare global {
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   function trace(message: string, data: any, as_hex: boolean): JSInt64 | HookErrorCode
 
-  function trace_float(
-    read_ptr: number,
-    read_len: number,
-    float1: number,
-  ): JSInt64 | HookErrorCode
+  function trace_float(read_ptr: number, read_len: number, float1: number): JSInt64 | HookErrorCode
 
-  function trace_num(
-    read_ptr: number,
-    read_len: number,
-    number: number,
-  ): JSInt64 | HookErrorCode
+  function trace_num(read_ptr: number, read_len: number, number: number): JSInt64 | HookErrorCode
 
-  function trace_slot(
-    read_ptr: number,
-    read_len: number,
-    slot: number,
-  ): JSInt64 | HookErrorCode
+  function trace_slot(read_ptr: number, read_len: number, slot: number): JSInt64 | HookErrorCode
 
   function util_accid(raddr: string): JSIntArray | HookErrorCode
 
@@ -214,5 +207,9 @@ declare global {
 
   function util_sha512h(data: JSIntArrayOrHexString): JSIntArray | HookErrorCode
 
-  function util_verify(rawData: JSIntArrayOrHexString, rawSig: JSIntArrayOrHexString, rawKey: JSIntArrayOrHexString): JSInt64 | HookErrorCode
+  function util_verify(
+    rawData: JSIntArrayOrHexString,
+    rawSig: JSIntArrayOrHexString,
+    rawKey: JSIntArrayOrHexString,
+  ): JSInt64 | HookErrorCode
 }

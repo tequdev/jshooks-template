@@ -1,12 +1,19 @@
-import { buf2hex, hex2buf, hex2str } from "@/utils"
-import type { JSIntArray, JSJSON } from "@/utils/extern"
-import { ALREADY_SET, DOESNT_EXIST, INVALID_ARGUMENT, PREREQUISITE_NOT_MET, TOO_BIG, TOO_SMALL } from 'jshooks-api'
-import { encode, decode, encodeAccountID, decodeAccountID, type Transaction, verifyKeypairSignature } from '@transia/xrpl'
-import { hashTx } from "@transia/xrpl/dist/npm/utils/hashes"
-import sha512Half from "@transia/xrpl/dist/npm/utils/hashes/sha512Half"
-import type { Transaction as OriginTransaction } from '@transia/xahau-models'
-import type { HookParameter } from '@transia/xrpl/dist/npm/models/common';
+import { buf2hex, hex2buf, hex2str } from '@/utils'
+import type { JSIntArray, JSJSON } from '@/utils/extern'
 import { TRANSACTION_TYPE_MAP } from '@transia/ripple-binary-codec'
+import type { Transaction as OriginTransaction } from '@transia/xahau-models'
+import {
+  type Transaction,
+  decode,
+  decodeAccountID,
+  encode,
+  encodeAccountID,
+  verifyKeypairSignature,
+} from '@transia/xrpl'
+import type { HookParameter } from '@transia/xrpl/dist/npm/models/common'
+import { hashTx } from '@transia/xrpl/dist/npm/utils/hashes'
+import sha512Half from '@transia/xrpl/dist/npm/utils/hashes/sha512Half'
+import { ALREADY_SET, DOESNT_EXIST, INVALID_ARGUMENT, PREREQUISITE_NOT_MET, TOO_BIG, TOO_SMALL } from 'jshooks-api'
 
 export type MockedHookAPI = {
   hookResult: () => HookResult
@@ -38,7 +45,7 @@ export const mockedHookApi = (): MockedHookAPI => {
   global.emit = vi.fn((tx) => {
     if (expected_etxn_count <= -1) return PREREQUISITE_NOT_MET
     let txblob: string
-    if (Array.isArray(tx)) txblob = tx.map(v => v.toString(16)).join('')
+    if (Array.isArray(tx)) txblob = tx.map((v) => v.toString(16)).join('')
     else txblob = encode(tx as Transaction)
     return hex2buf(hashTx(txblob))
   })
@@ -180,7 +187,7 @@ export const mockedHookApi = (): MockedHookAPI => {
   global.hook_param = vi.fn((param_key) => {
     if (!hookParameters) throw new Error('use setInvokedTransaction() to set the transaction')
     const key = typeof param_key === 'string' ? param_key : buf2hex(param_key)
-    const param = hookParameters.find(p => p.HookParameter.HookParameterName === key)
+    const param = hookParameters.find((p) => p.HookParameter.HookParameterName === key)
     if (!param) return DOESNT_EXIST
     return hex2buf(param.HookParameter.HookParameterValue)
   })
@@ -188,7 +195,7 @@ export const mockedHookApi = (): MockedHookAPI => {
     if (!originTransaction) throw new Error('use setInvokedTransaction() to set the transaction')
     if (!originTransaction?.HookParameters) return DOESNT_EXIST
     const key = typeof param_key === 'string' ? param_key : buf2hex(param_key)
-    const param = originTransaction.HookParameters.find(p => p.HookParameter.HookParameterName === key)
+    const param = originTransaction.HookParameters.find((p) => p.HookParameter.HookParameterName === key)
     if (!param) return DOESNT_EXIST
     return hex2buf(param.HookParameter.HookParameterValue)
   })
@@ -285,8 +292,7 @@ export const mockedHookApi = (): MockedHookAPI => {
   let s = {} as Record<string, JSIntArray>
   global.state = vi.fn((key) => {
     const hexKey = typeof key === 'string' ? key : buf2hex(key)
-    if (!s[hexKey])
-      return DOESNT_EXIST
+    if (!s[hexKey]) return DOESNT_EXIST
     return s[hexKey]
   })
   global.state_foreign = vi.fn(() => {
@@ -298,7 +304,7 @@ export const mockedHookApi = (): MockedHookAPI => {
   global.state_set = vi.fn((data, key) => {
     const hexKey = typeof key === 'string' ? key : buf2hex(key)
     const bufferData = typeof data === 'string' ? hex2buf(data) : data
-    if (bufferData.every(v => v === 0)) delete s[hexKey]
+    if (bufferData.every((v) => v === 0)) delete s[hexKey]
     else s[hexKey] = bufferData
     return bufferData.length
   })
@@ -350,7 +356,7 @@ export const mockedHookApi = (): MockedHookAPI => {
   global.util_sha512h = vi.fn((data) => {
     let hex: string
     if (typeof data === 'string') hex = data
-    else hex = (buf2hex(data))
+    else hex = buf2hex(data)
     return hex2buf(sha512Half(hex))
   })
   global.util_verify = vi.fn((data, sig, key) => {
@@ -386,6 +392,6 @@ export const mockedHookApi = (): MockedHookAPI => {
     hookResult,
     resetHookResult,
     setTransaction,
-    setHookParameters
+    setHookParameters,
   }
 }

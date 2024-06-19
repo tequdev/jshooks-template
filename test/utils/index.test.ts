@@ -1,4 +1,4 @@
-import { buf2hex, buf2str, hex2buf, hex2str, str2hex } from '@/utils';
+import { buf2hex, buf2str, hex2buf, hex2str, str2hex } from '@/utils'
 
 it('hex2str', () => {
   expect(hex2str('414243')).toEqual('ABC')
