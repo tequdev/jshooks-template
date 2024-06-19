@@ -1,4 +1,4 @@
-// biome-ignore lint/nursery/noNodejsModules: <explanation>
+// biome-ignore lint/correctness/noNodejsModules: <explanation>
 import * as fs from 'node:fs'
 
 function removeImportExportStatements(filePath: string, outputPath?: string): string {

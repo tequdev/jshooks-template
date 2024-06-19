@@ -11,6 +11,9 @@
     "postbuild": "rm -rf contracts/dist",
     "test": "LOG_LEVEL=error VITE_CJS_TRACE=true vitest",
     "test:unit": "pnpm test -- --exclude ./test/index.test.ts",
+    "format": "biome format . --write",
+    "lint": "biome lint .",
+    "check": "biome check --write .",
     "xrpld:start": "xrpld-netgen up:standalone --protocol xahau --version 2024.6.3-jshooks+903",
     "xrpld:stop": "xrpld-netgen down:standalone  --protocol xahau --version 2024.6.3-jshooks+903",
     "trace": "docker logs --tail 100 -f xahau 2>&1 | cut -d ' ' -f 5- | grep -E 'HookInfo|HookTrace|HookError|preclaim result'"
@@ -26,12 +29,13 @@
     "jshooks-api": "^1.0.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.5.3",
+    "@biomejs/biome": "^1.8.1",
     "@transia/ripple-binary-codec": "1.4.6-alpha.9",
     "@tsconfig/node18": "^18.2.2",
     "@types/node": "^20.14.5",
     "esbuild": "^0.21.3",
     "js2wasm-cli": "^1.0.0",
+    "lefthook": "^1.6.16",
     "tsx": "^4.10.5",
     "typescript": "^5.3.3",
     "vite-tsconfig-paths": "^4.3.2",

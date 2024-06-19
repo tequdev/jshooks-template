@@ -19,7 +19,7 @@ import {
 } from '@transia/hooks-toolkit'
 
 //
-// biome-ignore lint/nursery/noNodejsModules: <explanation>
+// biome-ignore lint/correctness/noNodejsModules: <explanation>
 import path from 'node:path'
 function readJSHookBinaryHexFromNS(filename: string): string {
   const buildPath = `${process.cwd()}/build`
