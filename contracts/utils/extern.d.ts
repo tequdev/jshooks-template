@@ -183,7 +183,7 @@ declare global {
   function sto_validate(sto: JSIntArrayOrHexString): JSInt64 | HookErrorCode
 
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-  function trace(message: string, data: any, as_hex: boolean): JSInt64 | HookErrorCode
+  function trace(message: string, data: any, as_hex = false): JSInt64 | HookErrorCode
 
   function trace_float(read_ptr: number, read_len: number, float1: number): JSInt64 | HookErrorCode
 
