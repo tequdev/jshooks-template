@@ -1,16 +1,14 @@
-import { ttINVOKE } from 'jshooks-api'
-
-const transactiontype = () => otxn_type()
+import { assert } from './utils'
 
 const Hook = (arg: number) => {
-  trace('TRC', 'HookOnTT.js: Called.', false)
-  // _g(1, 1)
+  trace('TRC', 'index.ts: Called.', false)
 
-  const tt = transactiontype()
-  if (tt !== ttINVOKE) {
-    return rollback('hook_on_tt: HookOn field is incorrectly set.', -37)
-  }
-  return accept('HookOnTT.js: Finished.', 13)
+  const txn = otxn_json()
+  assert(typeof txn !== 'number')
+
+  if (txn.TransactionType !== 'Invoke') return rollback('index.ts: not an Invoke transaction', 14)
+
+  return accept('HookOnTT.js: Finished.', 16)
 }
 
 export { Hook }
