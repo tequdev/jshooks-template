@@ -1,17 +1,4 @@
-import { convertBuffer2hex, convertHexToBuffer, convertHexToString, convertStringToHex, uint16FromHex, uint16Tohex, uint32FromHex, uint32Tohex, uint64BigFromHex, uint64FromHex, uint64Tohex, uint8ArrayFromNumber, uint8ArrayToNumber, uint8FromHex, uint8Tohex } from "../../contracts/utils/macro"
-
-it('convertHexToString', () => {
-  expect(convertHexToString('414243')).toEqual('ABC')
-})
-it('convertStringToHex', () => {
-  expect(convertStringToHex('ABC')).toEqual('414243')
-})
-it('convertBuffer2hex', () => {
-  expect(convertBuffer2hex([0x41, 0x42, 0x43])).toEqual('414243')
-})
-it('convertHexToBuffer', () => {
-  expect(convertHexToBuffer('414243')).toEqual([0x41, 0x42, 0x43])
-})
+import { uint16FromHex, uint16Tohex, uint32FromHex, uint32Tohex, uint64BigFromHex, uint64FromHex, uint64Tohex, uint8ArrayFromNumber, uint8ArrayToNumber, uint8FromHex, uint8Tohex } from "../../contracts/utils/macro"
 
 describe('uint8', () => {
   it('uint8ArrayFromNumber', () => {

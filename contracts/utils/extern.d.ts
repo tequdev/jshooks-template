@@ -16,7 +16,7 @@ type JSIntArrayOrHexString = JSIntArray | string
 type TransactionJSON = Transaction
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-type LedgerEntryJSON = Record<string, any>
+type JSON = Record<string, any>
 
 declare global {
   function g(guard_id: number, maxiter: number): JSInt64 | HookErrorCode
@@ -29,11 +29,11 @@ declare global {
 
   function otxn_json(): TransactionJSON | HookErrorCode
 
-  function slot_json(slotno: JSInt): LedgerEntryJSON | HookErrorCode
+  function slot_json(slotno: JSInt): JSON | HookErrorCode
 
-  function sto_to_json(sto_in: JSIntArrayOrHexString): LedgerEntryJSON | HookErrorCode
+  function sto_to_json(sto_in: JSIntArrayOrHexString): JSON | HookErrorCode
 
-  function sto_from_json(json_in: LedgerEntryJSON): JSIntArray | HookErrorCode
+  function sto_from_json(json_in: JSON): JSIntArray | HookErrorCode
 
   function etxn_burden(): JSInt64 | HookErrorCode
 
@@ -202,12 +202,12 @@ declare global {
 
   function util_keylet(
     keylet_type: JSInt,
-    a: JSInt,
-    b: JSInt,
-    c: JSInt,
-    d: JSInt,
-    e: JSInt,
-    f: JSInt,
+    a?: JSIntArrayOrHexString | JSInt,
+    b?: JSIntArrayOrHexString | JSInt,
+    c?: JSIntArrayOrHexString | JSInt,
+    d?: JSIntArrayOrHexString | JSInt,
+    e?: JSIntArrayOrHexString | JSInt,
+    f?: JSIntArrayOrHexString | JSInt,
   ): JSIntArray | HookErrorCode
 
   function util_raddr(acc_id: JSIntArrayOrHexString): string | HookErrorCode

@@ -8,29 +8,10 @@ export const done = (msg: number) => {
   accept(msg.toString(), 0)
 }
 export const assert: (cond: boolean, msg?: string) => asserts cond = (cond, msg) => {
-  if (!cond) rollback(msg || '', -1)
+  if (!cond) rollback(`Assertion failed: ${msg || ''}`, -1)
 }
 export const nope = (msg: string) => {
   rollback(msg, -1)
-}
-
-export const convertHexToString = (hex: string): string => {
-  const intArr = [];
-  for (let j = 0; j < hex.length; j += 2) {
-    intArr.push(Number.parseInt(`0x${hex.slice(j, j + 2)}`, 16))
-  }
-  return String.fromCodePoint(...intArr)
-}
-export const convertStringToHex = (str: string): string => {
-  return str.split('').map(c => c.charCodeAt(0).toString(16)).join('')
-}
-export const convertBuffer2hex = (arr: number[]): string => {
-  return arr.map(c => c.toString(16)).join('')
-}
-export const convertHexToBuffer = (hex: string): number[] => {
-  // biome-ignore lint/style/noNonNullAssertion: <explanation>
-  const str = hex.match(/.{2}/g)!
-  return str.map(c => Number.parseInt(c, 16))
 }
 
 const getByteHexFromView = (view: DataView, offset: number) => view.getUint8(offset).toString(16).padStart(2, '0').toUpperCase()
