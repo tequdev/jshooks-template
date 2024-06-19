@@ -1,9 +1,9 @@
-import { ttINVOKE } from "jshooks-api"
+import { ttINVOKE } from 'jshooks-api'
 
 const transactiontype = () => otxn_type()
 
 const Hook = (arg: number) => {
-  trace("TRC", 'HookOnTT.js: Called.', false)
+  trace('TRC', 'HookOnTT.js: Called.', false)
   // _g(1, 1)
 
   const tt = transactiontype()

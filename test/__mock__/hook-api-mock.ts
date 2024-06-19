@@ -1,5 +1,5 @@
-import { convertBuffer2hex, convertHexToBuffer, convertHexToString } from "../../contracts/utils/macro"
-import type { JSIntArray, LedgerEntryJSON } from "../../contracts/utils/extern"
+import { buf2hex, hex2buf, hex2str } from "@/utils"
+import type { JSIntArray, JSJSON } from "@/utils/extern"
 import { ALREADY_SET, DOESNT_EXIST, INVALID_ARGUMENT, PREREQUISITE_NOT_MET, TOO_BIG, TOO_SMALL } from 'jshooks-api'
 import { encode, decode, encodeAccountID, decodeAccountID, type Transaction, verifyKeypairSignature } from '@transia/xrpl'
 import { hashTx } from "@transia/xrpl/dist/npm/utils/hashes"
@@ -40,7 +40,7 @@ export const mockedHookApi = (): MockedHookAPI => {
     let txblob: string
     if (Array.isArray(tx)) txblob = tx.map(v => v.toString(16)).join('')
     else txblob = encode(tx as Transaction)
-    return convertHexToBuffer(hashTx(txblob))
+    return hex2buf(hashTx(txblob))
   })
   global.prepare = vi.fn((template) => {
     template.Fee = '100'
@@ -57,8 +57,8 @@ export const mockedHookApi = (): MockedHookAPI => {
       template.EmitDetails = {
         EmitGeneration: etxn_generation(),
         EmitBurden: etxn_burden(),
-        EmitParentTxnID: convertBuffer2hex(util_sha512h('EmitParentTxnID') as JSIntArray),
-        EmitHookHash: convertBuffer2hex(util_sha512h('EmitHookHash') as JSIntArray),
+        EmitParentTxnID: buf2hex(util_sha512h('EmitParentTxnID') as JSIntArray),
+        EmitHookHash: buf2hex(util_sha512h('EmitHookHash') as JSIntArray),
       }
     }
     return template
@@ -72,13 +72,14 @@ export const mockedHookApi = (): MockedHookAPI => {
   })
   global.sto_to_json = vi.fn((sto_in) => {
     // TODO: support STObject
-    const hex = typeof sto_in === 'string' ? sto_in : convertBuffer2hex(sto_in)
-    return decode(hex) as unknown as LedgerEntryJSON
+    const hex = typeof sto_in === 'string' ? sto_in : buf2hex(sto_in)
+    return decode(hex) as unknown as JSJSON
   })
   global.sto_from_json = vi.fn((json_in) => {
     // TODO: support STObject
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     const hex = encode(json_in as any)
-    return convertHexToBuffer(hex)
+    return hex2buf(hex)
   })
   // etxn
   let expected_etxn_count = -1
@@ -178,18 +179,18 @@ export const mockedHookApi = (): MockedHookAPI => {
   })
   global.hook_param = vi.fn((param_key) => {
     if (!hookParameters) throw new Error('use setInvokedTransaction() to set the transaction')
-    const key = typeof param_key === 'string' ? param_key : convertBuffer2hex(param_key)
+    const key = typeof param_key === 'string' ? param_key : buf2hex(param_key)
     const param = hookParameters.find(p => p.HookParameter.HookParameterName === key)
     if (!param) return DOESNT_EXIST
-    return convertHexToBuffer(param.HookParameter.HookParameterValue)
+    return hex2buf(param.HookParameter.HookParameterValue)
   })
   global.otxn_param = vi.fn((param_key) => {
     if (!originTransaction) throw new Error('use setInvokedTransaction() to set the transaction')
     if (!originTransaction?.HookParameters) return DOESNT_EXIST
-    const key = typeof param_key === 'string' ? param_key : convertBuffer2hex(param_key)
+    const key = typeof param_key === 'string' ? param_key : buf2hex(param_key)
     const param = originTransaction.HookParameters.find(p => p.HookParameter.HookParameterName === key)
     if (!param) return DOESNT_EXIST
-    return convertHexToBuffer(param.HookParameter.HookParameterValue)
+    return hex2buf(param.HookParameter.HookParameterValue)
   })
   global.hook_param_set = vi.fn(() => {
     throw new Error('global.hook_param_set Should be mocked')
@@ -198,7 +199,7 @@ export const mockedHookApi = (): MockedHookAPI => {
     throw new Error('global.hook_pos Should be mocked')
   })
   global.hook_skip = vi.fn((hhash, flags) => {
-    const hashBuf = typeof hhash === 'string' ? convertHexToBuffer(hhash) : hhash
+    const hashBuf = typeof hhash === 'string' ? hex2buf(hhash) : hhash
     const f = Number(flags)
     if (hashBuf.length !== 32 || f < 0 || 1 < f) return INVALID_ARGUMENT
     return 1
@@ -283,7 +284,7 @@ export const mockedHookApi = (): MockedHookAPI => {
   // state
   let s = {} as Record<string, JSIntArray>
   global.state = vi.fn((key) => {
-    const hexKey = typeof key === 'string' ? key : convertBuffer2hex(key)
+    const hexKey = typeof key === 'string' ? key : buf2hex(key)
     if (!s[hexKey])
       return DOESNT_EXIST
     return s[hexKey]
@@ -295,8 +296,8 @@ export const mockedHookApi = (): MockedHookAPI => {
     throw new Error('global.state_foreign_set Should be mocked')
   })
   global.state_set = vi.fn((data, key) => {
-    const hexKey = typeof key === 'string' ? key : convertBuffer2hex(key)
-    const bufferData = typeof data === 'string' ? convertHexToBuffer(data) : data
+    const hexKey = typeof key === 'string' ? key : buf2hex(key)
+    const bufferData = typeof data === 'string' ? hex2buf(data) : data
     if (bufferData.every(v => v === 0)) delete s[hexKey]
     else s[hexKey] = bufferData
     return bufferData.length
@@ -320,8 +321,8 @@ export const mockedHookApi = (): MockedHookAPI => {
   // trace
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   global.trace = vi.fn((key: string, value: any, isHex: boolean) => {
-    if (isHex) console.log(key, convertHexToString(value))
-    else console.log(key, value)
+    // biome-ignore lint/style/noRestrictedGlobals: <explanation>
+    console.log(key, isHex ? hex2str(value) : value)
     return 0
   })
   global.trace_float = vi.fn(() => {
@@ -342,20 +343,20 @@ export const mockedHookApi = (): MockedHookAPI => {
   })
   global.util_raddr = vi.fn((acc_id) => {
     let buf: number[]
-    if (typeof acc_id === 'string') buf = convertHexToBuffer(acc_id)
+    if (typeof acc_id === 'string') buf = hex2buf(acc_id)
     else buf = acc_id
     return encodeAccountID(Buffer.from(buf))
   })
   global.util_sha512h = vi.fn((data) => {
     let hex: string
     if (typeof data === 'string') hex = data
-    else hex = (convertBuffer2hex(data))
-    return convertHexToBuffer(sha512Half(hex))
+    else hex = (buf2hex(data))
+    return hex2buf(sha512Half(hex))
   })
   global.util_verify = vi.fn((data, sig, key) => {
-    const message = typeof data === 'string' ? convertHexToBuffer(data) : data
-    const signature = typeof sig === 'string' ? convertHexToBuffer(sig) : sig
-    const publicKey = typeof key === 'string' ? convertHexToBuffer(key) : key
+    const message = typeof data === 'string' ? hex2buf(data) : data
+    const signature = typeof sig === 'string' ? hex2buf(sig) : sig
+    const publicKey = typeof key === 'string' ? hex2buf(key) : key
     return verifyKeypairSignature(message, signature, publicKey) ? 1 : 0
   })
 

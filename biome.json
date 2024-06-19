@@ -12,13 +12,20 @@
           "level": "error",
           "options": {
             "deniedGlobals": [
-              "setTimeout",
-              "setInterval",
+              "assert",
+              "console",
               "eval",
-              "Promise",
-              "Function"
+              "setInterval",
+              "setTimeout",
+              "Function",
+              "Promise"
             ]
           }
+        }
+      },
+      "nursery": {
+        "noNodejsModules": {
+          "level": "error"
         }
       }
     }

@@ -16,7 +16,7 @@ type JSIntArrayOrHexString = JSIntArray | string
 type TransactionJSON = Transaction
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-type JSON = Record<string, any>
+type JSJSON = Record<string, any>
 
 declare global {
   function g(guard_id: number, maxiter: number): JSInt64 | HookErrorCode
@@ -29,11 +29,11 @@ declare global {
 
   function otxn_json(): TransactionJSON | HookErrorCode
 
-  function slot_json(slotno: JSInt): JSON | HookErrorCode
+  function slot_json(slotno: JSInt): JSJSON | HookErrorCode
 
-  function sto_to_json(sto_in: JSIntArrayOrHexString): JSON | HookErrorCode
+  function sto_to_json(sto_in: JSIntArrayOrHexString): JSJSON | HookErrorCode
 
-  function sto_from_json(json_in: JSON): JSIntArray | HookErrorCode
+  function sto_from_json(json_in: JSJSON): JSIntArray | HookErrorCode
 
   function etxn_burden(): JSInt64 | HookErrorCode
 

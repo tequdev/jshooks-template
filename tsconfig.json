@@ -1,6 +1,10 @@
 {
   "extends": "@tsconfig/node18/tsconfig.json",
   "compilerOptions": {
-    "types": ["vitest/globals"]
+    "types": [],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./contracts/*"]
+    }
   }
 }

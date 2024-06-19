@@ -1,4 +1,4 @@
-import { uint16FromHex, uint16Tohex, uint32FromHex, uint32Tohex, uint64BigFromHex, uint64FromHex, uint64Tohex, uint8ArrayFromNumber, uint8ArrayToNumber, uint8FromHex, uint8Tohex } from "../../contracts/utils/macro"
+import { uint16FromHex, uint16Tohex, uint32FromHex, uint32Tohex, uint64BigFromHex, uint64FromHex, uint64Tohex, uint8ArrayFromNumber, uint8ArrayToNumber, uint8FromHex, uint8Tohex } from "@/utils"
 
 describe('uint8', () => {
   it('uint8ArrayFromNumber', () => {

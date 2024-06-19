@@ -1,13 +1,11 @@
 export * from './macro'
 export namespace console {
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   export const log = (key: string, msg: any) => trace(key, msg, false)
-  export const error = (msg: any) => trace("ERR", msg, false)
-  export const warn = (msg: any) => trace("WRN", msg, false)
-  export const info = (msg: any) => trace("INF", msg, false)
 }
 
 export const hex2str = (hex: string) => {
-  const intArr = [];
+  const intArr: number[] = [];
   for (let j = 0; j < hex.length; j += 2) {
     intArr.push(Number.parseInt(`0x${hex.slice(j, j + 2)}`, 16))
   }
