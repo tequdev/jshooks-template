@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prebuild:compile": "esbuild contracts/index.ts --bundle --outfile=contracts/dist/index.js --format=esm",
-    "prebuild:js-clean": "tsx hook_cleaner.ts contracts/dist/index.js contracts/dist/index.js",
+    "prebuild:js-clean": "tsx scripts/hook_cleaner.ts contracts/dist/index.js contracts/dist/index.js",
     "prebuild": "pnpm prebuild:compile && pnpm prebuild:js-clean",
     "build": "js2wasm-cli contracts/dist/index.js build/",
     "postbuild": "rm -rf contracts/dist",

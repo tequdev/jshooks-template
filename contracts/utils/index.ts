@@ -1,7 +1,7 @@
 export * from './macro'
-export namespace console {
+export const console = {
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-  export const log = (key: string, msg: any) => trace(key, msg, false)
+  log: (key: string, msg: any) => trace(key, msg, false),
 }
 
 export const hex2str = (hex: string) => {
