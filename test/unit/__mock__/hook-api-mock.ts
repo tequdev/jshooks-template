@@ -54,7 +54,6 @@ export const mockedHookApi = (): MockedHookAPI => {
     template.SigningPubKey = ''
     template.Sequence = 0
     template.Account = util_raddr(hook_account() as JSIntArray) as string
-    // @ts-ignore
     if (!template.FirstLedgerSequence) {
       template.LastLedgerSequence = 1 + 1
     }
@@ -254,7 +253,7 @@ export const mockedHookApi = (): MockedHookAPI => {
     return type
   })
   // rollback
-  global.rollback = vi.fn((msg: string, code: number) => {
+  global.rollback = vi.fn((msg, code) => {
     if (!result) {
       result = 'rollback'
       resultMsg = msg
@@ -326,8 +325,7 @@ export const mockedHookApi = (): MockedHookAPI => {
     throw new Error('global.sto_validate Should be mocked')
   })
   // trace
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-  global.trace = vi.fn((key: string, value: any, isHex: boolean) => {
+  global.trace = vi.fn((key, value, isHex) => {
     console.log(key, isHex ? hex2str(value) : value)
     return 0
   })

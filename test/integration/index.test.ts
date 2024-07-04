@@ -1,4 +1,4 @@
-import { SetHookFlags, calculateHookOn } from '@transia/xrpl'
+import { SetHookFlags } from '@transia/xrpl'
 
 import {
   type XrplIntegrationTestContext,
@@ -12,19 +12,11 @@ import {
   Xrpld,
   clearAllHooksV3,
   clearHookStateV3,
+  createHookPayload,
   hexNamespace,
   type iHook,
   setHooksV3,
-  wasmToHex,
 } from '@transia/hooks-toolkit'
-
-//
-import path from 'node:path'
-function readJSHookBinaryHexFromNS(filename: string): string {
-  const buildPath = `${process.cwd()}/build`
-  return wasmToHex(path.resolve(__dirname, `${buildPath}/${filename}.bc`))
-}
-//
 
 const namespace = 'namespace'
 
@@ -33,13 +25,13 @@ describe('test', () => {
 
   beforeAll(async () => {
     testContext = await setupClient(serverUrl)
-    const hook = {
-      CreateCode: readJSHookBinaryHexFromNS('../build/index'),
-      Flags: SetHookFlags.hsfOverride,
-      HookOn: calculateHookOn(['Invoke']),
-      HookNamespace: hexNamespace(namespace),
-      HookApiVersion: 1, // js-hook
-    } as iHook
+    const hook = createHookPayload({
+      version: 1,
+      createFile: 'index',
+      namespace: namespace,
+      flags: SetHookFlags.hsfOverride,
+      hookOnArray: ['Invoke'],
+    })
     await setHooksV3({
       client: testContext.client,
       seed: testContext.alice.seed,
@@ -48,10 +40,10 @@ describe('test', () => {
   })
 
   afterAll(async () => {
-    const clearHook = {
+    const clearHook: iHook = {
       Flags: SetHookFlags.hsfNSDelete,
       HookNamespace: hexNamespace(namespace),
-    } as iHook
+    }
     await clearHookStateV3({
       client: testContext.client,
       seed: testContext.alice.seed,

@@ -30,7 +30,7 @@
             "noRestrictedGlobals": {
               "level": "error",
               "options": {
-                "deniedGlobals": ["assert", "console", "eval", "setInterval", "setTimeout", "Function", "Promise"]
+                "deniedGlobals": ["console", "eval", "setInterval", "setTimeout", "Function", "Promise"]
               }
             }
           },
