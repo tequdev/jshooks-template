@@ -1,21 +1,18 @@
 import { SetHookFlags } from '@transia/xrpl'
 
 import {
-  type XrplIntegrationTestContext,
-  serverUrl,
-  setupClient,
-  teardownClient,
-} from '@transia/hooks-toolkit/dist/npm/src/libs/xrpl-helpers'
-
-import {
   type SetHookParams,
+  type XrplIntegrationTestContext,
   Xrpld,
   clearAllHooksV3,
   clearHookStateV3,
   createHookPayload,
   hexNamespace,
   type iHook,
+  serverUrl,
   setHooksV3,
+  setupClient,
+  teardownClient,
 } from '@transia/hooks-toolkit'
 
 const namespace = 'namespace'
