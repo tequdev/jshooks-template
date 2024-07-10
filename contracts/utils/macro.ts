@@ -14,8 +14,11 @@ export const nope = (msg: string) => {
   rollback(msg, -1)
 }
 
-const getByteHexFromView = (view: DataView, offset: number) =>
-  view.getUint8(offset).toString(16).padStart(2, '0').toUpperCase()
+const numberToHex = (value: number | bigint, byte: number) =>
+  value
+    .toString(16)
+    .padStart(byte / 4, '0')
+    .toUpperCase()
 
 // uint8
 export const uint8ArrayFromNumber = (value: number) => {
@@ -27,7 +30,7 @@ export const uint8ArrayToNumber = (buffer: number[]) => {
   return Number(view.getUint8(0))
 }
 export const uint8Tohex = (value: number) => {
-  return value.toString(16).toUpperCase()
+  return numberToHex(value, 8)
 }
 export const uint8FromHex = (hex: string) => {
   return Number.parseInt(hex, 16)
@@ -43,11 +46,7 @@ export const uint8FromHex = (hex: string) => {
 //   return Number(view.getUint16(0, true))
 // }
 export const uint16Tohex = (value: number) => {
-  const view = new DataView(Uint16Array.from([value]).buffer)
-  let hex = ''
-  hex += getByteHexFromView(view, 1)
-  hex += getByteHexFromView(view, 0)
-  return hex
+  return numberToHex(value, 16)
 }
 export const uint16FromHex = (hex: string) => {
   return Number.parseInt(hex, 16)
@@ -63,13 +62,7 @@ export const uint16FromHex = (hex: string) => {
 //   return Number(view.getUint32(0, true))
 // }
 export const uint32Tohex = (value: number) => {
-  const view = new DataView(Uint32Array.from([value]).buffer)
-  let hex = ''
-  hex += getByteHexFromView(view, 3)
-  hex += getByteHexFromView(view, 2)
-  hex += getByteHexFromView(view, 1)
-  hex += getByteHexFromView(view, 0)
-  return hex
+  return numberToHex(value, 32)
 }
 export const uint32FromHex = (hex: string) => {
   return Number.parseInt(hex, 16)
@@ -93,17 +86,7 @@ export const uint32FromHex = (hex: string) => {
 //   return Number(view.getBigUint64(0, true))
 // }
 export const uint64Tohex = (value: bigint | number) => {
-  const view = new DataView(BigUint64Array.from([BigInt(value)]).buffer)
-  let hex = ''
-  hex += getByteHexFromView(view, 7)
-  hex += getByteHexFromView(view, 6)
-  hex += getByteHexFromView(view, 5)
-  hex += getByteHexFromView(view, 4)
-  hex += getByteHexFromView(view, 3)
-  hex += getByteHexFromView(view, 2)
-  hex += getByteHexFromView(view, 1)
-  hex += getByteHexFromView(view, 0)
-  return hex
+  return numberToHex(value, 64)
 }
 export const uint64FromHex = (hex: string) => {
   return Number.parseInt(hex, 16)

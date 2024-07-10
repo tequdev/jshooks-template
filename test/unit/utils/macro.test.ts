@@ -22,7 +22,7 @@ describe('uint8', () => {
     expect(uint8ArrayToNumber([0xff])).toEqual(0xff)
   })
   it('uint8Tohex', () => {
-    expect(uint8Tohex(0x10)).toEqual('10')
+    expect(uint8Tohex(0x00)).toEqual('00')
     expect(uint8Tohex(0xff)).toEqual('FF')
   })
   it('uint8FromHex', () => {
