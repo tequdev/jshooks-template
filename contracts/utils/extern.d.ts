@@ -76,8 +76,8 @@ declare global {
   function float_sign(float1: JSXFL): JSXFL | HookErrorCode
 
   function float_sto(
-    currency: JSIntArrayOrHexString,
-    issuer: JSIntArrayOrHexString,
+    currency: JSIntArrayOrHexString | undefined,
+    issuer: JSIntArrayOrHexString | undefined,
     float1: JSXFL,
     field_code: JSInt,
   ): JSIntArray | HookErrorCode
@@ -160,16 +160,18 @@ declare global {
   ): JSIntArray | HookErrorCode
 
   function state_foreign_set(
-    val: JSIntArrayOrHexString,
+    val: JSIntArrayOrHexString | undefined,
     key: JSIntArrayOrHexString,
+    // undefined is also available for `ns`, `acc`, but `state_set` should be used instead
     ns: JSIntArrayOrHexString,
     acc: JSIntArrayOrHexString,
   ): JSInt64 | HookErrorCode
 
-  function state_set(data: JSIntArrayOrHexString, key: JSIntArrayOrHexString): JSInt64 | HookErrorCode
+  function state_set(data: JSIntArrayOrHexString | undefined, key: JSIntArrayOrHexString): JSInt64 | HookErrorCode
 
   function sto_emplace(
     sto: JSIntArrayOrHexString,
+    // undefined is also available for `field`, but `sto_erase` should be used instead
     field: JSIntArrayOrHexString,
     field_id: JSInt,
   ): JSIntArray | HookErrorCode

@@ -304,6 +304,10 @@ export const mockedHookApi = (): MockedHookAPI => {
   global.state_set = vi.fn((data, key) => {
     const hexKey = typeof key === 'string' ? key : buf2hex(key)
     const bufferData = typeof data === 'string' ? hex2buf(data) : data
+    if (bufferData === undefined) {
+      delete s[hexKey]
+      return 0
+    }
     if (bufferData.every((v) => v === 0)) delete s[hexKey]
     else s[hexKey] = bufferData
     return bufferData.length
