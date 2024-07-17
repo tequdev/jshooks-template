@@ -22,7 +22,7 @@
     "@transia/xahau-models": "2.7.3-alpha.29",
     "@transia/xrpl": "2.7.3-alpha.28",
     "dotenv": "^16.4.1",
-    "jshooks-api": "^1.0.0"
+    "jshooks-api": "^1.0.5"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.8.1",

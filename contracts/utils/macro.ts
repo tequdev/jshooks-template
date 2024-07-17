@@ -7,9 +7,6 @@ export const doneMsg = (msg: string) => {
 export const done = (msg: number) => {
   accept(msg.toString(), 0)
 }
-export const assert: (cond: boolean, msg?: string) => asserts cond = (cond, msg) => {
-  if (!cond) rollback(`Assertion failed: ${msg || ''}`, -1)
-}
 export const nope = (msg: string) => {
   rollback(msg, -1)
 }

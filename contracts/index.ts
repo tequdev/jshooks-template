@@ -1,10 +1,14 @@
-import { assert, console } from './utils'
+import { assert, fallback } from 'jshooks-api'
+import { console, hex2buf } from './utils'
 
 const Hook = (arg: number) => {
   console.log('TRC', 'index.ts: Called.')
 
-  const txn = otxn_json()
-  assert(typeof txn !== 'number')
+  const txn = assert(otxn_json())
+
+  const data = fallback(state(hex2buf('ABC')))
+
+  console.log('TRC', data)
 
   if (txn.TransactionType !== 'Invoke') {
     return rollback('index.ts: Not an Invoke transaction', -1)

@@ -21,8 +21,8 @@ importers:
         specifier: ^16.4.1
         version: 16.4.5
       jshooks-api:
-        specifier: ^1.0.0
-        version: 1.0.0
+        specifier: ^1.0.5
+        version: 1.0.5
     devDependencies:
       '@biomejs/biome':
         specifier: ^1.8.1
@@ -662,9 +662,6 @@ packages:
     resolution: {integrity: sha512-MmIS55eTOHcS3skCzS23043QW0m9tLLmuPqq0L5lDI5mOuTcl5Euk5WjD2WcETivxNvlOExqLmp21jmhseXMww==}
     engines: {node: '>=12.0.0', npm: '>=7.0.0'}
 
-  '@transia/xrpl-models@2.9.1-alpha.0':
-    resolution: {integrity: sha512-V4eWqFqELsD3V9qqZGntR6Fd+kLcKFPRQ1Wsg4qh5+1iCeFkDFRtThMhM+WrSgPkskOJG29P3hVP8+wSJzHIUQ==}
-
   '@transia/xrpl@2.7.3-alpha.28':
     resolution: {integrity: sha512-Ox0JwpXa0pTIELMGqSQItMGM4JWWG/cMw7bceHrBBdNQtFP82edcD1o8vdApYZnezzbHMoITE/yz9IQ2q9Of/g==}
     engines: {node: '>=10.13.0'}
@@ -680,9 +677,6 @@ packages:
 
   '@tsconfig/node16@1.0.4':
     resolution: {integrity: sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==}
-
-  '@tsconfig/node16@16.1.3':
-    resolution: {integrity: sha512-9nTOUBn+EMKO6rtSZJk+DcqsfgtlERGT9XPJ5PRj/HNENPCBY1yu/JEj5wT6GLtbCLBO2k46SeXDaY0pjMqypw==}
 
   '@tsconfig/node18@18.2.4':
     resolution: {integrity: sha512-5xxU8vVs9/FNcvm3gE07fPbn9tl6tqGGWA9tSlwsUEkBxtRnTsNmwrV8gasZ9F/EobaSv9+nu8AxUKccw77JpQ==}
@@ -1067,11 +1061,8 @@ packages:
     resolution: {integrity: sha512-pPW1ql4nxuBnXW0FP/whqyJKOen0yO2yXi2WWhxa9jZGmRuRiU+q3EFqjbXGpAQJV8zORJXm/FZgkJMlgc4qbg==}
     hasBin: true
 
-  jshooks-api@1.0.0:
-    resolution: {integrity: sha512-SuV20EANEunqXfgWCJqxTKxGMT39xpYbXFP6O2JXD2WEe4Tmg/CGkRluiGz2w2jeukHvEZNgJDuQnPwaUlu3Nw==}
-
-  jshooks-api@1.0.2:
-    resolution: {integrity: sha512-gEJQtjxKd85o+ldYucdARChBByv32Ihx0/Lh9jSzdjKDz2TCIcNXIqIAc0livravExORoHoPu+E6ELhm9XZluA==}
+  jshooks-api@1.0.5:
+    resolution: {integrity: sha512-iyPYrWOcTAQUrC+dH6diw8zosDT+CWRfL6ZbUApPB41WBjGKfIsimlJnvE4/NinxnCLTViUTr/SQFoCDKSOIxQ==}
 
   kuler@2.0.0:
     resolution: {integrity: sha512-Xq9nH7KlWZmXAtodXDDRE7vs6DU1gTU8zYDHDiWLSip45Egwq3plLHzPn27NgvzL2r1LMPC1vdqh98sQxtqj4A==}
@@ -1830,7 +1821,7 @@ snapshots:
       '@transia/xahau-models': 2.7.3-alpha.29
       '@transia/xrpl': 2.7.3-alpha.28
       crypto-js: 4.2.0
-      jshooks-api: 1.0.2
+      jshooks-api: 1.0.5
       winston: 3.13.0
     transitivePeerDependencies:
       - '@swc/core'
@@ -1870,8 +1861,6 @@ snapshots:
       - '@swc/core'
       - '@swc/wasm'
 
-  '@transia/xrpl-models@2.9.1-alpha.0': {}
-
   '@transia/xrpl@2.7.3-alpha.28':
     dependencies:
       '@transia/ripple-address-codec': 4.2.8-alpha.0
@@ -1895,8 +1884,6 @@ snapshots:
   '@tsconfig/node14@1.0.3': {}
 
   '@tsconfig/node16@1.0.4': {}
-
-  '@tsconfig/node16@16.1.3': {}
 
   '@tsconfig/node18@18.2.4': {}
 
@@ -2386,13 +2373,12 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  jshooks-api@1.0.0:
+  jshooks-api@1.0.5:
     dependencies:
-      '@transia/xrpl-models': 2.9.1-alpha.0
-      '@tsconfig/node16': 16.1.3
-      typescript: 5.4.5
-
-  jshooks-api@1.0.2: {}
+      '@transia/xahau-models': 2.7.3-alpha.29
+    transitivePeerDependencies:
+      - '@swc/core'
+      - '@swc/wasm'
 
   kuler@2.0.0: {}
 
