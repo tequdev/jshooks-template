@@ -9,13 +9,15 @@ import {
   createHookPayload,
   hexNamespace,
   type iHook,
-  serverUrl,
+  serverUrl as localServerUrl,
   setHooksV3,
   setupClient,
   teardownClient,
 } from '@transia/hooks-toolkit'
 
 const namespace = 'namespace'
+
+const serverUrl = localServerUrl
 
 describe('test', () => {
   let testContext: XrplIntegrationTestContext
@@ -28,6 +30,7 @@ describe('test', () => {
       namespace: namespace,
       flags: SetHookFlags.hsfOverride,
       hookOnArray: ['Invoke'],
+      fee: '1000',
     })
     await setHooksV3({
       client: testContext.client,
