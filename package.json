@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "js2wasm-cli contracts/index.ts build",
-    "test": "LOG_LEVEL=error VITE_CJS_TRACE=true vitest",
-    "test:unit": "pnpm test -- ./test/unit/**/*.test.ts",
+    "test": "LOG_LEVEL=error VITE_CJS_TRACE=true vitest ./test/integration/*.test.ts",
+    "test:unit": "LOG_LEVEL=error VITE_CJS_TRACE=true vitest ./test/unit/**/*.test.ts",
+    "test:all": "LOG_LEVEL=error VITE_CJS_TRACE=true vitest",
     "format": "biome format . --write",
     "lint": "biome lint .",
     "check": "biome check --write .",
