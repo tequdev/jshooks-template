@@ -84,7 +84,8 @@ export const uint16FromNumber = (value: number) => {
   return [value & 0xff, (value >> 8) & 0xff]
 }
 export const uint16ToNumber = (value: number[]) => {
-  return value[0] | (value[1] << 8)
+  const view = new DataView(new Uint8Array(value).buffer)
+  return Number(view.getUint16(0))
 }
 
 // uint32
@@ -107,7 +108,8 @@ export const uint32FromNumber = (value: number) => {
   return [value & 0xff, (value >> 8) & 0xff, (value >> 16) & 0xff, (value >> 24) & 0xff]
 }
 export const uint32ToNumber = (value: number[]) => {
-  return value[0] | (value[1] << 8) | (value[2] << 16) | (value[3] << 24)
+  const view = new DataView(new Uint8Array(value).buffer)
+  return Number(view.getUint32(0))
 }
 
 // uint64
@@ -150,16 +152,8 @@ export const uint64FromBigInt = (value: bigint) => {
   ]
 }
 export const uint64ToBigInt = (value: number[]) => {
-  return (
-    BigInt(value[0]) |
-    (BigInt(value[1]) << 8n) |
-    (BigInt(value[2]) << 16n) |
-    (BigInt(value[3]) << 24n) |
-    (BigInt(value[4]) << 32n) |
-    (BigInt(value[5]) << 40n) |
-    (BigInt(value[6]) << 48n) |
-    (BigInt(value[7]) << 56n)
-  )
+  const view = new DataView(new Uint8Array(value).buffer)
+  return Number(view.getBigUint64(0, true))
 }
 
 type FieldType = 'uint8' | 'uint16' | 'uint32' | 'uint64' | 'account' | 'hash256'
