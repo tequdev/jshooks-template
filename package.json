@@ -19,7 +19,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@transia/hooks-toolkit": "2.0.0-alpha.3",
     "@transia/xahau-models": "2.7.3-alpha.29",
     "@transia/xrpl": "2.7.3-alpha.28",
     "dotenv": "^16.4.1",
@@ -27,6 +26,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.8.1",
+    "@transia/hooks-toolkit": "2.0.0-alpha.4",
     "@transia/ripple-binary-codec": "1.4.6-alpha.10",
     "@tsconfig/node18": "^18.2.2",
     "@types/node": "^20.14.5",
