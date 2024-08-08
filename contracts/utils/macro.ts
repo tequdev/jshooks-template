@@ -176,7 +176,14 @@ type FieldTypeToValues<T extends FieldType[]> = {
   [K in keyof T]: FieldTypeToValue<T[K]>
 }
 
-export const encodeBuffer = <const T extends FieldType[]>(values: FieldTypeToValues<T>, types: T): number[] => {
+type Mutable<T> = {
+  -readonly [K in keyof T]: Mutable<T[K]>
+}
+
+export const encodeBuffer = <const T extends readonly FieldType[]>(
+  values: FieldTypeToValues<Mutable<T>>,
+  types: T,
+): number[] => {
   return types.flatMap((t, i) => {
     const v = values[i]
     switch (t) {
@@ -204,7 +211,10 @@ export const encodeBuffer = <const T extends FieldType[]>(values: FieldTypeToVal
   })
 }
 
-export const decodeBuffer = <const T extends FieldType[]>(buffer: number[], types: T): FieldTypeToValues<T> => {
+export const decodeBuffer = <const T extends readonly FieldType[]>(
+  buffer: number[],
+  types: T,
+): FieldTypeToValues<Mutable<T>> => {
   let offset = 0
   return types.map((type) => {
     if (offset >= buffer.length) rollback('decodeBuffer: buffer length is too short', 0)
@@ -243,9 +253,10 @@ export const decodeBuffer = <const T extends FieldType[]>(buffer: number[], type
       default:
         throw new Error('Invalid type')
     }
-  }) as FieldTypeToValues<T>
+  }) as FieldTypeToValues<Mutable<T>>
 }
+// const StateFields = ['uint8', 'uint16', 'uint32', 'uint64', 'account', 'hash256'] as const
 // const acc = [0x6B, 0x30, 0xE2, 0x94, 0xF3, 0x40, 0x3F, 0xF8, 0x7C, 0xEF, 0x9E, 0x72, 0x21, 0x7F, 0xF7, 0xEB, 0x4A, 0x6A, 0x43, 0xF4]
 // const hash = [0x40, 0x84, 0x55, 0xDC, 0x2C, 0xDD, 0x7C, 0x27, 0x66, 0x45, 0xE3, 0xAF, 0x94, 0x44, 0x95, 0xDA, 0x88, 0xB7, 0xEB, 0x1D, 0x86, 0x9D, 0x11, 0x0E, 0x9C, 0xA8, 0x36, 0x8A, 0x35, 0x88, 0xAA, 0x48]
-// const buffer = encodeBuffer([0xff, 0xffff, 0xffff, 1000n, acc, hash], ['uint8', 'uint16', 'uint32', 'uint64', 'account', 'hash256'])
-// const [uint8value, uint16value, uint32value, uint64value, accountvalue, hash256value] = decodeBuffer(buffer, ['uint8', 'uint16', 'uint32', 'uint64', 'account', 'hash256'])
+// const buffer = encodeBuffer([0xff, 0xffff, 0xffff, 1000n, acc, hash], StateFields)
+// const [uint8value, uint16value, uint32value, uint64value, accountvalue, hash256value] = decodeBuffer(buffer, StateFields)
