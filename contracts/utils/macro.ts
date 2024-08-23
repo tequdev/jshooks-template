@@ -81,7 +81,7 @@ export const uint16FromHex = (hex: string) => {
 }
 export const uint16FromNumber = (value: number) => {
   if (value < 0 || 0xffff < value) rollback('uint16FromNumber: value out of range', -1)
-  return [value & 0xff, (value >> 8) & 0xff]
+  return [(value >> 8) & 0xff, value & 0xff]
 }
 export const uint16ToNumber = (value: number[]) => {
   const view = new DataView(new Uint8Array(value).buffer)
@@ -105,7 +105,7 @@ export const uint32FromHex = (hex: string) => {
 }
 export const uint32FromNumber = (value: number) => {
   if (value < 0 || 0xffffffff < value) rollback('uint32FromNumber: value out of range', -1)
-  return [value & 0xff, (value >> 8) & 0xff, (value >> 16) & 0xff, (value >> 24) & 0xff]
+  return [(value >> 24) & 0xff, (value >> 16) & 0xff, (value >> 8) & 0xff, value & 0xff]
 }
 export const uint32ToNumber = (value: number[]) => {
   const view = new DataView(new Uint8Array(value).buffer)
@@ -141,19 +141,19 @@ export const uint64BigFromHex = (hex: string) => {
 export const uint64FromBigInt = (value: bigint) => {
   if (value < 0n || 0xffffffffffffffffn < value) rollback('uint64FromBigInt: value out of range', -1)
   return [
-    Number(value & 0xffn),
-    Number((value >> 8n) & 0xffn),
-    Number((value >> 16n) & 0xffn),
-    Number((value >> 24n) & 0xffn),
-    Number((value >> 32n) & 0xffn),
-    Number((value >> 40n) & 0xffn),
-    Number((value >> 48n) & 0xffn),
     Number((value >> 56n) & 0xffn),
+    Number((value >> 48n) & 0xffn),
+    Number((value >> 40n) & 0xffn),
+    Number((value >> 32n) & 0xffn),
+    Number((value >> 24n) & 0xffn),
+    Number((value >> 16n) & 0xffn),
+    Number((value >> 8n) & 0xffn),
+    Number(value & 0xffn),
   ]
 }
 export const uint64ToBigInt = (value: number[]) => {
   const view = new DataView(new Uint8Array(value).buffer)
-  return Number(view.getBigUint64(0, true))
+  return Number(view.getBigUint64(0))
 }
 
 type FieldType = 'uint8' | 'uint16' | 'uint32' | 'uint64' | 'account' | 'hash256'
