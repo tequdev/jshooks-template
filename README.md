@@ -10,6 +10,12 @@
 
 ## Usage
 
+### Install dependencies
+
+```sh
+pnpm i
+```
+
 ### Start the standalone network
 
 ```sh
