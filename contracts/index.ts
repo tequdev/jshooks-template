@@ -1,15 +1,4 @@
-import {
-  assert,
-  type FieldType,
-  type FieldTypeToValues,
-  type Mutable,
-  buf2str,
-  decodeBuffer,
-  encodeBuffer,
-  fallback,
-  str2hex,
-  uint16FromNumber,
-} from 'jshooks-api'
+import { assert } from 'jshooks-api'
 
 const Hook = (arg: number) => {
   const tx = assert(otxn_json())
