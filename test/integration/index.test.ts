@@ -15,6 +15,8 @@ import {
   teardownClient,
 } from '@transia/hooks-toolkit'
 
+import { compileJS } from '@xahau/hooks-cli'
+
 const namespace = 'namespace'
 
 const serverUrl = localServerUrl
@@ -23,6 +25,8 @@ describe('test', () => {
   let testContext: XrplIntegrationTestContext
 
   beforeAll(async () => {
+    await compileJS('./contracts/index.ts', './build/')
+
     testContext = await setupClient(serverUrl)
     const hook = createHookPayload({
       version: 1,
