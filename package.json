@@ -10,8 +10,8 @@
     "format": "biome format . --write",
     "lint": "biome lint .",
     "check": "biome check --write .",
-    "xrpld:start": "xrpld-netgen up:standalone --protocol xahau --version 2025.2.21-jshooks+1339",
-    "xrpld:stop": "xrpld-netgen down:standalone --protocol xahau --version 2025.2.21-jshooks+1339",
+    "xrpld:start": "xrpld-netgen up:standalone --protocol xahau --version 2025.3.12-jshooks+1500",
+    "xrpld:stop": "xrpld-netgen down:standalone --protocol xahau --version 2025.3.12-jshooks+1500",
     "trace": "docker logs --tail 100 -f xahau 2>&1 | cut -d ' ' -f 5- | grep -E 'Publishing ledger|HookInfo|HookTrace|HookError|preclaim result'"
   },
   "keywords": [],
