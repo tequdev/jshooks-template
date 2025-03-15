@@ -1,4 +1,4 @@
-import { SetHookFlags } from '@transia/xrpl'
+import { SetHookFlags } from 'xahau'
 
 import {
   type SetHookParams,
@@ -27,7 +27,10 @@ describe('test', () => {
   beforeAll(async () => {
     await compileJS('./contracts/index.ts', './build/')
 
+    console.log('setupClient')
+
     testContext = await setupClient(serverUrl)
+    console.log('setupClient')
 
     const createHook = (contract: string) => {
       return createHookPayload({

@@ -9,11 +9,11 @@ import {
   encode,
   encodeAccountID,
   verifyKeypairSignature,
-} from '@transia/xrpl'
-import type { HookParameter } from '@transia/xrpl/dist/npm/models/common'
-import { hashTx } from '@transia/xrpl/dist/npm/utils/hashes'
-import sha512Half from '@transia/xrpl/dist/npm/utils/hashes/sha512Half'
+} from 'xahau'
+import { hashTx } from 'xahau/dist/npm/utils/hashes'
+import sha512Half from 'xahau/dist/npm/utils/hashes/sha512Half'
 import { ALREADY_SET, DOESNT_EXIST, INVALID_ARGUMENT, PREREQUISITE_NOT_MET, TOO_BIG, TOO_SMALL } from 'jshooks-api'
+import type { HookParameter } from 'xahau/dist/npm/models/common/xahau'
 
 export type MockedHookAPI = {
   hookResult: () => HookResult
