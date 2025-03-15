@@ -28,18 +28,24 @@ describe('test', () => {
     await compileJS('./contracts/index.ts', './build/')
 
     testContext = await setupClient(serverUrl)
-    const hook = createHookPayload({
-      version: 1,
-      createFile: 'index',
-      namespace: namespace,
-      flags: SetHookFlags.hsfOverride,
-      hookOnArray: ['Invoke'],
-      fee: '1000',
-    })
+
+    const createHook = (contract: string) => {
+      return createHookPayload({
+        version: 1,
+        createFile: contract,
+        namespace: namespace,
+        flags: SetHookFlags.hsfOverride,
+        hookOnArray: ['Invoke'],
+        fee: '10000',
+      })
+    }
+
     await setHooksV3({
       client: testContext.client,
       seed: testContext.alice.seed,
-      hooks: [{ Hook: hook }],
+      hooks: [
+        { Hook: createHook('index') },
+      ],
     } as SetHookParams)
   })
 
@@ -51,7 +57,17 @@ describe('test', () => {
     await clearHookStateV3({
       client: testContext.client,
       seed: testContext.alice.seed,
-      hooks: [{ Hook: clearHook }],
+      hooks: [
+        { Hook: clearHook },
+        { Hook: clearHook },
+        { Hook: clearHook },
+        { Hook: clearHook },
+        { Hook: clearHook },
+        { Hook: clearHook },
+        { Hook: clearHook },
+        { Hook: clearHook },
+        { Hook: clearHook },
+      ],
     } as SetHookParams)
     await clearAllHooksV3({
       client: testContext.client,
